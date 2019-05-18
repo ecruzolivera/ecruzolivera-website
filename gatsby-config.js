@@ -1,8 +1,25 @@
+
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: `ecruzolivera`,
     description: `Ernesto Cruz Olivera personal Website`,
-    author: `@ecruzolivera`,
+    author: `Ernesto Cruz Olivera`,
+    twitterHandler: `ecruzolivera`,
+    gitlabUser: `ecruzolivera`,
+    keywords: [
+      `personal`,
+      `blog`,
+      `C`,
+      `C/C++`,
+      `embedded`,
+      `microcontrollers`,
+      `Real Time`,
+      `State Machines`,
+      `ReactJs`,
+      `Javascript`,
+    ],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

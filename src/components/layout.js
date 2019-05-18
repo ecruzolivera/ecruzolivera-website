@@ -4,42 +4,66 @@
  *
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
+import React from 'react'
+import PropTypes from 'prop-types'
+import { useStaticQuery, graphql } from 'gatsby'
 
-import React from "react"
-import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { withStyles } from '@material-ui/core/styles'
 
-import Header from "./header"
-import Libraries from "./libraries"
+import Header from './header'
+import Footer from './footer'
+import Libraries from './libraries'
 
-const Layout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
+const styles = theme => ({
+  root: {
+    display: 'grid',
+    gridTemplateAreas: `
+    header
+    main
+    footer
+    `,
+    gridTemplateRows: 'auto 1fr auto',
+    gridTemplateColumns: 'auto',
+    height: '100vh',
+  },
+  header: {
+    gridArea: 'header',
+  },
+  main: {
+    gridArea: 'main',
+  },
+  footer: {
+    gridArea: 'footer',
+  },
+})
+
+const Layout = ({ children, classes }) => {
+  const data = useStaticQuery(graphql`
+    query HeaderQuery {
+      site {
+        siteMetadata {
+          title
         }
       }
-    `}
-    render={data => (
-      <>
-        <Libraries />
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </>
-    )}
-  />
-)
+    }
+  `)
+  return (
+    <div className={classes.root}>
+      <CssBaseline />
+      <Libraries />
+      <Header
+        className={{ root: classes.header }}
+        siteTitle={data.site.siteMetadata.title}
+      />
+      <main className={{ root: classes.main }}>{children}</main>
+      <Footer className={{ root: classes.footer }} />
+    </div>
+  )
+}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default Layout
+export default withStyles(styles)(Layout)
