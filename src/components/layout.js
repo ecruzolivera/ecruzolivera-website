@@ -19,9 +19,9 @@ const styles = theme => ({
   root: {
     display: 'grid',
     gridTemplateAreas: `
-    header
-    main
-    footer
+    'header'
+    'main'
+    'footer'
     `,
     gridTemplateRows: 'auto 1fr auto',
     gridTemplateColumns: 'auto',
@@ -32,6 +32,7 @@ const styles = theme => ({
   },
   main: {
     gridArea: 'main',
+    margin: '0 auto',
   },
   footer: {
     gridArea: 'footer',
@@ -58,9 +59,18 @@ const Layout = ({ children, classes }) => {
     { text: 'CV', to: '/cv' },
   ]
   const socialLinks = [
-    { icon: 'fab fa-twitter', to: `https://twitter.com/${site.siteMetadata.twitter}` },
-    { icon: 'fab fa-gitlab', to: `https://gitlab.com/${site.siteMetadata.gitlab}` },
-    { icon: 'fab fa-linkedin', to: `https://www.linkedin.com/in/${site.siteMetadata.linkedin}` },
+    {
+      icon: 'fab fa-twitter',
+      to: `https://twitter.com/${site.siteMetadata.twitter}`,
+    },
+    {
+      icon: 'fab fa-gitlab',
+      to: `https://gitlab.com/${site.siteMetadata.gitlab}`,
+    },
+    {
+      icon: 'fab fa-linkedin',
+      to: `https://www.linkedin.com/in/${site.siteMetadata.linkedin}`,
+    },
   ]
   return (
     <div className={classes.root}>
@@ -71,7 +81,7 @@ const Layout = ({ children, classes }) => {
         socialLinks={socialLinks}
         className={{ root: classes.header }}
       />
-      <main className={{ root: classes.main }}>{children}</main>
+      <main className={classes.main}>{children}</main>
       <Footer className={{ root: classes.footer }} />
     </div>
   )

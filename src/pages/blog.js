@@ -3,12 +3,13 @@ import React from 'react'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
+import withRoot from '../utils/withRoot'
+
 const blog = () => (
   <Layout>
-    <SEO title='Page two' />
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
+    <SEO title='Blog' />
+    <h1>Blog</h1>
   </Layout>
 )
 
-export default blog
+export default withRoot(blog)
