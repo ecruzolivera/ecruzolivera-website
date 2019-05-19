@@ -1,4 +1,3 @@
-
 require('dotenv').config()
 
 module.exports = {
@@ -6,8 +5,9 @@ module.exports = {
     title: `ecruzolivera`,
     description: `Ernesto Cruz Olivera personal Website`,
     author: `Ernesto Cruz Olivera`,
-    twitterHandler: `ecruzolivera`,
-    gitlabUser: `ecruzolivera`,
+    twitter: `ecruzolivera`,
+    gitlab: `ecruzolivera`,
+    linkedin: `ecruzolivera`,
     keywords: [
       `personal`,
       `blog`,

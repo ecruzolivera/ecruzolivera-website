@@ -19,8 +19,8 @@ function SEO({ description, lang, meta, keywords, title }) {
             title
             description
             author
-            twitterHandler
-            gitlabUser
+            twitter
+            gitlab
             keywords
           }
         }

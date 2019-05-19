@@ -39,22 +39,37 @@ const styles = theme => ({
 })
 
 const Layout = ({ children, classes }) => {
-  const data = useStaticQuery(graphql`
-    query HeaderQuery {
-      site {
-        siteMetadata {
-          title
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            twitter
+            gitlab
+            linkedin
+          }
         }
       }
-    }
-  `)
+    `,
+  )
+  const links = [
+    { text: 'Home', to: '/' },
+    { text: 'Blog', to: '/blog' },
+    { text: 'CV', to: '/cv' },
+  ]
+  const socialLinks = [
+    { icon: 'fab fa-twitter', to: `https://twitter.com/${site.siteMetadata.twitter}` },
+    { icon: 'fab fa-gitlab', to: `https://gitlab.com/${site.siteMetadata.gitlab}` },
+    { icon: 'fab fa-linkedin', to: `https://www.linkedin.com/in/${site.siteMetadata.linkedin}` },
+  ]
   return (
     <div className={classes.root}>
       <CssBaseline />
       <Libraries />
       <Header
+        links={links}
+        socialLinks={socialLinks}
         className={{ root: classes.header }}
-        siteTitle={data.site.siteMetadata.title}
       />
       <main className={{ root: classes.main }}>{children}</main>
       <Footer className={{ root: classes.footer }} />
