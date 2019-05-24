@@ -10,13 +10,11 @@ import Paper from '@material-ui/core/Paper'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-import withRoot from '../utils/withRoot'
-
 const styles = theme => ({
   root: {
     maxWidth: '768px',
     margin: theme.spacing.unit,
-    padding: 2*theme.spacing.unit,
+    padding: 2 * theme.spacing.unit,
   },
 })
 
@@ -48,4 +46,4 @@ const IndexPage = ({ classes }) => (
   </Layout>
 )
 
-export default withRoot(withStyles(styles)(IndexPage))
+export default withStyles(styles)(IndexPage)

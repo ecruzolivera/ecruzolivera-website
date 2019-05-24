@@ -3,8 +3,6 @@ import React from 'react'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-import withRoot from '../utils/withRoot'
-
 const CV = () => (
   <Layout>
     <SEO title='CV' />
@@ -12,4 +10,4 @@ const CV = () => (
   </Layout>
 )
 
-export default withRoot(CV)
+export default CV
