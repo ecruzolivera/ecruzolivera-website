@@ -17,14 +17,11 @@ const styles = theme => ({
   },
 })
 
-const blog = ({ classes }) => {
+const blogTemplate = ({ classes }) => {
   const data = useStaticQuery(
     graphql`
       query {
-        allMarkdownRemark(
-          sort: { order: DESC, fields: [frontmatter___date] }
-          limit: 1000
-        ) {
+        allMarkdownRemark {
           edges {
             node {
               frontmatter {
@@ -45,23 +42,11 @@ const blog = ({ classes }) => {
       <SEO title='Blog' />{' '}
       <Paper className={classes.root}>
         <Typography variant='h2' align='Center'>
-          Blog
+          Blog 1
         </Typography>
-        <ul>
-          {data.allMarkdownRemark.edges.map(edge => (
-            <li>
-              <Typography variant='h4' align='left'>
-                {edge.node.frontmatter.title}
-              </Typography>
-              <Typography variant='subtitle1' align='left'>
-                {edge.node.frontmatter.date}
-              </Typography>
-            </li>
-          ))}
-        </ul>
       </Paper>
     </Layout>
   )
 }
 
-export default withStyles(styles)(blog)
+export default withStyles(styles)(blogTemplate)
