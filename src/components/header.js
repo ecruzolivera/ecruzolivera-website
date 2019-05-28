@@ -19,7 +19,7 @@ const styles = theme => ({
     display: 'flex',
   },
   link: {
-    padding: theme.spacing.unit,
+    padding: theme.spacing(1),
     '&:hover': {
       opacity: 0.8,
     },
@@ -35,7 +35,12 @@ const Header = ({ links, socialLinks, classes }) => (
       <Toolbar className={classes.toolbar}>
         <div className={classes.links}>
           {links.map(link => (
-            <Link component={RouterLink} to={link.to} className={classes.link}>
+            <Link
+              component={RouterLink}
+              to={link.to}
+              className={classes.link}
+              key={link.to}
+            >
               {link.text}
             </Link>
           ))}
@@ -47,9 +52,10 @@ const Header = ({ links, socialLinks, classes }) => (
               target='_blank'
               rel='noreferrer'
               className={classes.link}
+              key={link.to}
             >
               <Icon
-                component='icon'
+                component='i'
                 fontSize='large'
                 className={clsx(classes.link, link.icon)}
               />

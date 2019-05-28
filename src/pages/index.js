@@ -13,8 +13,8 @@ import SEO from '../components/seo'
 const styles = theme => ({
   root: {
     maxWidth: '768px',
-    margin: theme.spacing.unit,
-    padding: 2 * theme.spacing.unit,
+    margin: theme.spacing(1),
+    padding: theme.spacing(2),
   },
 })
 

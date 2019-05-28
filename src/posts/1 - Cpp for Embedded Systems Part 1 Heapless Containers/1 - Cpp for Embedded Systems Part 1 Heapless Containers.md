@@ -1,12 +1,10 @@
 ---
-title : "Cpp for Embedded Systems Part 1 : Heapless Containers"
+title : "Cpp for Embedded Systems Part 1: Heapless Containers"
 description : "Series about using C++ in microcontrollers" 
 date : 2018-03-28 
-slug : "Cpp for Embedded Systems Part 1 - Heapless Containers" 
+slug : "Cpp-for-Embedded-Systems-Part-1-Heapless-Containers" 
 tags : ["cpp", "containers", "collections", "embedded systems", "microcontrollers"]
 ---
-
-# Cpp for Embedded Systems Part 1: Heapless Containers
 
 To the developers of probably all the programming languages except C++:
 

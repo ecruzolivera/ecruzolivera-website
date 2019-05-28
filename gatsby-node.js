@@ -19,8 +19,14 @@ exports.createPages = ({ actions, graphql }) => {
         edges {
           node {
             frontmatter {
+              title
+              description
+              date(formatString: "DD MMMM YYYY")
               slug
             }
+            timeToRead
+            html
+            excerpt
           }
         }
       }
@@ -34,7 +40,7 @@ exports.createPages = ({ actions, graphql }) => {
       createPage({
         path: node.frontmatter.slug,
         component: blogTemplate,
-        context: {}, // additional data can be passed via context
+        context: { node }, // additional data can be passed via context
       })
     })
   })

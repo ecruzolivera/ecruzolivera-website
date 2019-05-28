@@ -6,8 +6,6 @@ slug : "Cpp for Embedded Systems Part 3: Hierarchical State Machines"
 tags : ["cpp", "containers", "collections", "embedded systems", "microcontrollers", "state machines"]
 ---
 
-# Cpp for Embedded Systems Part 3: Hierarchical State Machines
-
 Hi there dear Software/Embedded developers, this is the 3rd part of a [post series](https://ecruzolivera.tech/posts/) about using C++ in software development for microcontrollers. In the [first](https://ecruzolivera.tech/posts/cpp-for-embedded-systems-part-1-heapless-containers/) article I explained a technique that uses C++ templates and inheritance for the developing data structures that are allocated on the stack but can be referenced like if they were on the heap. In the [second](https://ecruzolivera.tech/posts/cpp-for-embedded-systems-part-2-delegates-and-signals/) article in the series, I used those data structures to create a Signal and Delegate class that allows the use of one or multiple callbacks in a type-safe way.
 
 In this article, I will develop a Hierarchical State Machine [library](https://gitlab.com/ecruzolivera/eHSM) with the following requirements:

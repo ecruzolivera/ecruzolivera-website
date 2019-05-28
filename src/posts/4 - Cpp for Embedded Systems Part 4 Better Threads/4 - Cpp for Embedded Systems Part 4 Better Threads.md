@@ -6,8 +6,6 @@ slug : "Cpp for Embedded Systems Part 4: Better Threads"
 tags : ["cpp", "containers", "collections", "embedded systems", "microcontrollers", "state machines"]
 ---
 
-# Cpp for Embedded Systems Part 4: Better Threads
-
 Hi there dear Software/Embedded developers, this is the 4th part of a [blog series](https://ecruzolivera.tech/posts/) about using C++ in software development for microcontrollers.
 
 In this article, I will talk about why I love RTOS (Real Time Operative Systems), but why I dislike most of the API that most RTOS vendors offer, and what can we do about it. 

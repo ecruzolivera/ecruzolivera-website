@@ -12,41 +12,21 @@ import SEO from '../components/seo'
 const styles = theme => ({
   root: {
     maxWidth: '768px',
-    margin: theme.spacing.unit,
-    padding: 2 * theme.spacing.unit,
+    margin: theme.spacing(1),
+    padding: theme.spacing(2),
   },
 })
 
-const blogTemplate = ({ classes }) => {
-  const data = useStaticQuery(
-    graphql`
-      query {
-        allMarkdownRemark {
-          edges {
-            node {
-              frontmatter {
-                title
-                description
-                date(formatString: "DD MMMM YYYY")
-                tags
-              }
-              excerpt
-            }
-          }
-        }
-      }
-    `,
-  )
-  return (
-    <Layout>
-      <SEO title='Blog' />{' '}
-      <Paper className={classes.root}>
-        <Typography variant='h2' align='Center'>
-          Blog 1
-        </Typography>
-      </Paper>
-    </Layout>
-  )
-}
+const blogTemplate = ({ classes, pageContext: { node } }) => (
+  <Layout>
+    <SEO title={`${node.frontmatter.title}`} description={`${node.excerp}`} />
+    <Paper className={classes.root}>
+      <Typography variant='h4'>{node.frontmatter.title}</Typography>
+      <Typography variant='h4'>{node.frontmatter.date}</Typography>
+      <Typography variant='h4'>{node.timeToRead}</Typography>
+      <div dangerouslySetInnerHTML={{ __html: node.html }} />
+    </Paper>
+  </Layout>
+)
 
 export default withStyles(styles)(blogTemplate)

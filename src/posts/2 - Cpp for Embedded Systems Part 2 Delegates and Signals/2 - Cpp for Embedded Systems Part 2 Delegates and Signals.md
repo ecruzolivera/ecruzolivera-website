@@ -6,8 +6,6 @@ slug : "Cpp for Embedded Systems Part 2: Delegates and Signals"
 tags : ["cpp", "containers", "collections", "embedded systems", "microcontrollers"]
 ---
 
-# Cpp for Embedded Systems Part 2: Delegates and Signals
-
 Here I am in the mission of provoking an aneurysm to the "hardcore" C/ASM microcontrollers developers. On this front, several months ago, I posted the first article in the series where is explained a technique using C++ template magic with a little of inheritance, to archive true type-safe and bound-checked containers at compile time without using dynamic memory allocation.
 
 In this article, I will explain how to leverage those containers to use a Delegate and a Signal class that can be used with the following requirements:
