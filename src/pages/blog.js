@@ -15,6 +15,9 @@ const styles = theme => ({
     margin: theme.spacing.unit,
     padding: 2 * theme.spacing.unit,
   },
+  postList: {
+    listStyleType: 'none',
+  },
 })
 
 const blog = ({ classes }) => {
@@ -28,12 +31,13 @@ const blog = ({ classes }) => {
           edges {
             node {
               frontmatter {
-                title
-                description
                 date(formatString: "DD MMMM YYYY")
                 tags
+                description
+                title
               }
               excerpt
+              timeToRead
             }
           }
         }
@@ -47,15 +51,16 @@ const blog = ({ classes }) => {
         <Typography variant='h2' align='Center'>
           Blog
         </Typography>
-        <ul>
+        <ul className={classes.postList}>
           {data.allMarkdownRemark.edges.map(edge => (
-            <li>
-              <Typography variant='h4' align='left'>
+            <li key={edge.node.frontmatter.title}>
+              <Typography variant='h5'>
                 {edge.node.frontmatter.title}
               </Typography>
-              <Typography variant='subtitle1' align='left'>
+              <Typography variant='subtitle1'>
                 {edge.node.frontmatter.date}
               </Typography>
+              <Typography variant='paragraph'>{edge.node.excerpt}</Typography>
             </li>
           ))}
         </ul>

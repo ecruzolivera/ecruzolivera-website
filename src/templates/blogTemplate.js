@@ -22,8 +22,8 @@ const blogTemplate = ({ classes, pageContext: { node } }) => (
     <SEO title={`${node.frontmatter.title}`} description={`${node.excerp}`} />
     <Paper className={classes.root}>
       <Typography variant='h4'>{node.frontmatter.title}</Typography>
-      <Typography variant='h4'>{node.frontmatter.date}</Typography>
-      <Typography variant='h4'>{node.timeToRead}</Typography>
+      <Typography variant='subtitle1'>{node.frontmatter.date}</Typography>
+      <Typography variant='subtitle2'>{node.timeToRead} min</Typography>
       <div dangerouslySetInnerHTML={{ __html: node.html }} />
     </Paper>
   </Layout>

@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles'
 const styles = theme => ({
   root: {
     width: '100%',
-    marginBottom: 2*theme.spacing.unit,
+    padding: theme.spacing(5, 0, 10),
   },
 })
 
