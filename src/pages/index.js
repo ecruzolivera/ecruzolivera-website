@@ -1,11 +1,8 @@
 import React from 'react'
 import { Link as RouterLink, useStaticQuery, graphql } from 'gatsby'
-import clsx from 'clsx'
 
 import { withStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
-import Link from '@material-ui/core/Link'
-import Paper from '@material-ui/core/Paper'
+import { Typography, Link, Container } from '@material-ui/core'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -33,7 +30,7 @@ const IndexPage = ({ classes }) => {
   return (
     <Layout>
       <SEO title='Home' />
-      <Paper className={classes.root}>
+      <Container maxWidth='md' className={classes.root}>
         <img src='' alt='' />
         <Typography variant='body1' align='justify'>
           I'm a Developer with 7 years of experience designing and implementing
@@ -55,7 +52,7 @@ const IndexPage = ({ classes }) => {
           </Link>
           .
         </Typography>
-      </Paper>
+      </Container>
     </Layout>
   )
 }

@@ -25,7 +25,9 @@ exports.createPages = ({ actions, graphql }) => {
               slug
             }
             timeToRead
+            htmlAst
             html
+            rawMarkdownBody
             excerpt
           }
         }

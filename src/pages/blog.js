@@ -8,15 +8,15 @@ import Paper from '@material-ui/core/Paper'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import { Container } from '@material-ui/core'
 
 const styles = theme => ({
-  root: {
-    maxWidth: '768px',
-    margin: theme.spacing.unit,
-    padding: 2 * theme.spacing.unit,
-  },
+  root: {},
   postList: {
     listStyleType: 'none',
+  },
+  postLink: {
+    marginBottom: theme.spacing(2),
   },
 })
 
@@ -35,6 +35,7 @@ const blog = ({ classes }) => {
                 tags
                 description
                 title
+                slug
               }
               excerpt
               timeToRead
@@ -47,24 +48,31 @@ const blog = ({ classes }) => {
   return (
     <Layout>
       <SEO title='Blog' />{' '}
-      <Paper className={classes.root}>
+      <Container maxWidth='md' className={classes.root}>
         <Typography variant='h2' align='Center'>
           Blog
         </Typography>
         <ul className={classes.postList}>
           {data.allMarkdownRemark.edges.map(edge => (
-            <li key={edge.node.frontmatter.title}>
-              <Typography variant='h5'>
-                {edge.node.frontmatter.title}
-              </Typography>
-              <Typography variant='subtitle1'>
-                {edge.node.frontmatter.date}
-              </Typography>
-              <Typography variant='paragraph'>{edge.node.excerpt}</Typography>
+            <li key={edge.node.frontmatter.title} className={classes.postLink}>
+              <Link
+                component={RouterLink}
+                to={edge.node.frontmatter.slug}
+                key={edge.node.frontmatter.slug}
+                color='inherit'
+              >
+                <Typography variant='h5'>
+                  {edge.node.frontmatter.title}
+                </Typography>
+                <Typography variant='subtitle1'>
+                  {edge.node.frontmatter.date}
+                </Typography>
+                <Typography variant='paragraph'>{edge.node.excerpt}</Typography>
+              </Link>
             </li>
           ))}
         </ul>
-      </Paper>
+      </Container>
     </Layout>
   )
 }
