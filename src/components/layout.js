@@ -8,38 +8,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import CssBaseline from '@material-ui/core/CssBaseline'
-import { withStyles } from '@material-ui/core/styles'
-
 import Header from './header'
 import Footer from './footer'
 import Libraries from './libraries'
 
-const styles = theme => ({
-  root: {
-    display: 'grid',
-    gridTemplateAreas: `
-    'header'
-    'main'
-    'footer'
-    `,
-    gridTemplateRows: 'auto 1fr auto',
-    gridTemplateColumns: 'auto',
-    height: '100vh',
-  },
-  header: {
-    gridArea: 'header',
-  },
-  main: {
-    gridArea: 'main',
-    margin: '0 auto',
-  },
-  footer: {
-    gridArea: 'footer',
-  },
-})
+import '../global.css'
+import classes from './layout.module.scss'
 
-const Layout = ({ children, classes }) => {
+const Layout = ({ children }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -74,15 +50,14 @@ const Layout = ({ children, classes }) => {
   ]
   return (
     <div className={classes.root}>
-      <CssBaseline />
       <Libraries />
-      <Header
-        links={links}
-        socialLinks={socialLinks}
-        className={{ root: classes.header }}
-      />
+      <header className={classes.header}>
+        <Header menuLinks={links} socialLinks={socialLinks} />
+      </header>
       <main className={classes.main}>{children}</main>
-      <Footer className={{ root: classes.footer }} />
+      <footer className={classes.footer}>
+        <Footer />
+      </footer>
     </div>
   )
 }
@@ -91,4 +66,4 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default withStyles(styles)(Layout)
+export default Layout

@@ -1,26 +1,10 @@
 import React from 'react'
 import { Link as RouterLink, useStaticQuery, graphql } from 'gatsby'
 
-import { withStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
-import Link from '@material-ui/core/Link'
-import Paper from '@material-ui/core/Paper'
-
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import { Container } from '@material-ui/core'
 
-const styles = theme => ({
-  root: {},
-  postList: {
-    listStyleType: 'none',
-  },
-  postLink: {
-    marginBottom: theme.spacing(2),
-  },
-})
-
-const blog = ({ classes }) => {
+const Blog = ({ classes }) => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -47,34 +31,26 @@ const blog = ({ classes }) => {
   )
   return (
     <Layout>
-      <SEO title='Blog' />{' '}
-      <Container maxWidth='md' className={classes.root}>
-        <Typography variant='h2' align='Center'>
-          Blog
-        </Typography>
-        <ul className={classes.postList}>
+      <SEO title='Blog' />
+      <article className='container max-w-xl mx-auto px-2 text-justify leading-loose'>
+        <h1 className='text-center text-2xl font-medium leading-none mb-8'>Blog</h1>
+        <ul>
           {data.allMarkdownRemark.edges.map(edge => (
-            <li key={edge.node.frontmatter.title} className={classes.postLink}>
-              <Link
-                component={RouterLink}
+            <li key={edge.node.frontmatter.title} className='hover:text-black mb-8'>
+              <RouterLink
                 to={edge.node.frontmatter.slug}
                 key={edge.node.frontmatter.slug}
-                color='inherit'
               >
-                <Typography variant='h5'>
-                  {edge.node.frontmatter.title}
-                </Typography>
-                <Typography variant='subtitle1'>
-                  {edge.node.frontmatter.date}
-                </Typography>
-                <Typography variant='paragraph'>{edge.node.excerpt}</Typography>
-              </Link>
+                <h2 className='text-2xl'>{edge.node.frontmatter.title}</h2>
+                <p className='text-sm'>{edge.node.frontmatter.date}</p>
+                <p>{edge.node.excerpt}</p>
+              </RouterLink>
             </li>
           ))}
         </ul>
-      </Container>
+      </article>
     </Layout>
   )
 }
 
-export default withStyles(styles)(blog)
+export default Blog

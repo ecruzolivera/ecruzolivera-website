@@ -22,11 +22,15 @@ module.exports = {
     ],
   },
   plugins: [
-    `gatsby-remark-figure-caption`,
+    `gatsby-plugin-postcss`,
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: `gatsby-remark-figure-caption`,
+          },
           {
             resolve: 'gatsby-remark-external-links',
             options: {
@@ -41,18 +45,11 @@ module.exports = {
             },
           },
           {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1rem`,
-            },
-          },
-          {
             resolve: `gatsby-remark-prismjs`,
           },
         ],
       },
     },
-    `gatsby-plugin-material-ui`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

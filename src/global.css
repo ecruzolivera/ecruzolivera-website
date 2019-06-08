@@ -1,0 +1,23 @@
+body {
+  font-family: Ubuntu, sans-serif;
+  background-color: whitesmoke;
+  color: rgb(34, 34, 34)
+}
+
+code {
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.linkText {
+  @apply bg-gray-400;
+}
+
+.linkText:hover {
+  @apply bg-gray-500;
+}
