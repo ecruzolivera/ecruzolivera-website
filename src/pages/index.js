@@ -8,7 +8,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title='Home' />
-      <div className='container max-w-xl mx-auto px-2 text-justify leading-loose'>
+      <article className='container max-w-xl mx-auto px-2 text-justify leading-loose'>
         <img src='../images/me.jpg' alt='Ernesto Cruz Olivera' />
         <p>
           I'm a Developer with 7 years of experience designing and implementing
@@ -25,9 +25,12 @@ const IndexPage = () => {
           My areas of interest are not only restricted to Embedded Systems, it
           also cover the fields of Digital Signal Processing and Web
           Development. You can read my thoughts in my{' '}
-          <RouterLink to={'/blog'} className='linkText'>blog</RouterLink>.
+          <RouterLink to={'/blog'} className='linkText'>
+            blog
+          </RouterLink>
+          .
         </p>
-      </div>
+      </article>
     </Layout>
   )
 }

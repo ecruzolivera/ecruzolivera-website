@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
     `,
   )
   const links = [
-    { text: 'Home', to: '/' },
+    { text: 'Me', to: '/' },
     { text: 'Blog', to: '/blog' },
     { text: 'CV', to: '/cv' },
   ]

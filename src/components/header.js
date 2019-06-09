@@ -7,7 +7,7 @@ const Header = ({ menuLinks, socialLinks }) => (
     <ul className='flex'>
       {menuLinks.map(link => (
         <RouterLink to={link.to} key={link.to}>
-          <li className='px-4 text-black hover:opacity-75'>
+          <li className='px-4 text-black border-black hover:border-b-2'>
             {link.text}
           </li>
         </RouterLink>
@@ -21,7 +21,7 @@ const Header = ({ menuLinks, socialLinks }) => (
           rel='noreferrer'
           key={link.to}
         >
-          <li className='px-4 text-black hover:opacity-75 text-xl'>
+          <li className='px-4 text-black hover:opacity-50 text-xl'>
             <i className={link.icon} />
           </li>
         </RouterLink>

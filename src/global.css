@@ -1,7 +1,7 @@
 body {
   font-family: Ubuntu, sans-serif;
   background-color: whitesmoke;
-  color: rgb(34, 34, 34)
+  color: rgb(34, 34, 34);
 }
 
 code {
@@ -20,4 +20,8 @@ code {
 
 .linkText:hover {
   @apply bg-gray-500;
+}
+
+.transition-400 {
+  transition: 400ms;
 }
