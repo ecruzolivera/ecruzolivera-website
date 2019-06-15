@@ -1,30 +1,50 @@
 {
   "name": "ecruzolivera-website",
+  "version": "0.1.0",
   "private": true,
   "description": "Ernesto Cruz Olivera personal website",
-  "version": "0.1.0",
+  "keywords": [
+    "gatsby"
+  ],
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  },
+  "license": "MIT",
   "author": "Ernesto Cruz Olivera <ernesto@ecruzolivera.tech>",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "serve": "gatsby serve",
+    "start": "npm run develop",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+  },
   "dependencies": {
     "clsx": "^1.0.4",
     "dotenv": "^8.0.0",
-    "gatsby": "^2.7.1",
-    "gatsby-image": "^2.1.0",
+    "gatsby": "^2.9.4",
+    "gatsby-image": "^2.1.4",
     "gatsby-plugin-catch-links": "^2.0.15",
     "gatsby-plugin-manifest": "^2.1.1",
-    "gatsby-plugin-offline": "^2.1.1",
+    "gatsby-plugin-offline": "^2.1.3",
     "gatsby-plugin-postcss": "^2.0.7",
+    "gatsby-plugin-purgecss": "^4.0.0",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sass": "^2.0.11",
-    "gatsby-plugin-sharp": "^2.1.0",
+    "gatsby-plugin-sharp": "^2.1.5",
     "gatsby-remark-classes": "^0.1.0",
     "gatsby-remark-component": "^1.1.3",
     "gatsby-remark-external-links": "0.0.4",
     "gatsby-remark-figure-caption": "^2.0.0",
-    "gatsby-remark-images": "^3.0.14",
-    "gatsby-remark-prismjs": "^3.2.9",
-    "gatsby-source-filesystem": "^2.0.37",
-    "gatsby-transformer-remark": "^2.3.12",
-    "gatsby-transformer-sharp": "^2.1.19",
+    "gatsby-remark-images": "^3.0.16",
+    "gatsby-remark-prismjs": "^3.2.11",
+    "gatsby-source-filesystem": "^2.0.39",
+    "gatsby-transformer-remark": "^2.4.0",
+    "gatsby-transformer-sharp": "^2.1.21",
     "jss": "^9.8.7",
     "markdown-to-jsx": "^6.10.2",
     "node-sass": "^4.12.0",
@@ -34,30 +54,10 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-jss": "^8.6.1",
-    "rehype-react": "^3.1.0"
+    "rehype-react": "^3.1.0",
+    "tailwindcss": "^1.0.4"
   },
   "devDependencies": {
-    "autoprefixer": "^9.6.0",
-    "prettier": "^1.17.1",
-    "tailwindcss": "^1.0.3"
-  },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "prettier": "^1.18.2"
   }
 }

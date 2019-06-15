@@ -22,8 +22,12 @@ module.exports = {
     ],
   },
   plugins: [
-    `gatsby-plugin-postcss`,
-    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        postCssPlugins: [require('tailwindcss')],
+      },
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {

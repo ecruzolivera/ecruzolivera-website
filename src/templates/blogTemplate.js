@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 
 import SEO from '../components/seo'
 import Layout from '../components/layout'
+import './blogTemplate.scss'
 
 const BlogTemplate = ({ pageContext: { node } }) => (
   <Layout>
     <SEO title={`${node.frontmatter.title}`} description={`${node.excerp}`} />
-    <article className='container max-w-xl mx-auto px-2 text-justify leading-loose'>
+    <article className='container max-w-3xl mx-auto px-2 text-justify leading-loose'>
       <h1 className='text-black text-2xl'>{node.frontmatter.title}</h1>
       <p className='text-sm mb-8'>
         <span>
@@ -19,7 +20,7 @@ const BlogTemplate = ({ pageContext: { node } }) => (
           <span className='ml-1 text-gray-700'>{node.timeToRead} min</span>
         </span>
       </p>
-      <div dangerouslySetInnerHTML={{ __html: node.html }} />
+      <div className='post-body' dangerouslySetInnerHTML={{ __html: node.html }} />
     </article>
   </Layout>
 )

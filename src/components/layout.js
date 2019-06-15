@@ -12,7 +12,7 @@ import Header from './header'
 import Footer from './footer'
 import Libraries from './libraries'
 
-import '../global.css'
+import '../global.scss'
 import classes from './layout.module.scss'
 
 const Layout = ({ children }) => {
