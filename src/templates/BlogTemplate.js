@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import SEO from '../components/seo'
-import Layout from '../components/layout'
-import './blogTemplate.css'
+import Layout from '../components/Layout'
+import SEO from '../components/Seo'
+
+import './BlogTemplate.css'
 
 const BlogTemplate = ({ pageContext: { node } }) => (
   <Layout>

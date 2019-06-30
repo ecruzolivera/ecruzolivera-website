@@ -1,15 +1,14 @@
 import React from 'react'
 import { Link as RouterLink } from 'gatsby'
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Layout from '../components/Layout'
+import SEO from '../components/Seo'
 
 const IndexPage = () => {
   return (
     <Layout>
       <SEO title='Home' />
       <article className='container max-w-xl mx-auto px-2 text-justify leading-loose'>
-        <img src='../images/me.jpg' alt='Ernesto Cruz Olivera' />
         <p>
           I'm a Developer with 7 years of experience designing and implementing
           software for Embedded Systems.

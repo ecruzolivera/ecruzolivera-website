@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link as RouterLink, useStaticQuery, graphql } from 'gatsby'
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Layout from '../components/Layout'
+import SEO from '../components/Seo'
 
 const Blog = ({ classes }) => {
   const data = useStaticQuery(

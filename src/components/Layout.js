@@ -8,12 +8,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import Header from './header'
-import Footer from './footer'
-import Libraries from './libraries'
+import Header from './Header'
+import Footer from './Footer'
+import Libraries from './Libraries'
 
 import '../global.css'
-import classes from './layout.module.css'
+import classes from './Layout.module.css'
 
 const Layout = ({ children }) => {
   const { site } = useStaticQuery(

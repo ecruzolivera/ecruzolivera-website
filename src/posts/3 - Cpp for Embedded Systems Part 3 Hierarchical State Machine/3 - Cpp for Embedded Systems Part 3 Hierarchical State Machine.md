@@ -209,7 +209,7 @@ First, we have a number of "event handlers" in this case also known as global fu
 Now I will present an Oven controller example that will be used to show the hierarchical part of the machine. The example was taken from the Wikipedia article about [UML state machines](https://en.wikipedia.org/wiki/UML_state_machine).
 
 
-![Oven controller state chart Image](/images/UML_state_machine_Oven.png)
+![Oven Controller state chart (source: Mirosamek at English Wikipedia)](images/UML_state_machine_Oven.png)
 
 This controller uses two top-level states: DoorOpen and Heating, and is a really dumb oven the only way that you can keep it off is by open the door. The Heating state has two substates: Toasting and Baking, the main difference is that the toasting process is at a fixed temperature with a timer, and when baking you can set the temperature value.
 
