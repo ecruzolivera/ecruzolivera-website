@@ -33,3 +33,11 @@
 .post-body pre code {
   @apply overflow-x-auto block whitespace-pre-wrap;
 }
+
+.md-figure {
+  @apply mb-4;
+}
+
+.md-figure-caption {
+  @apply text-center text-gray-600;
+}
