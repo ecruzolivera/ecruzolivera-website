@@ -54,7 +54,7 @@ const Layout = ({ children }) => {
       <header className={classes.header}>
         <Header menuLinks={links} socialLinks={socialLinks} />
       </header>
-      <main className={classes.main}>{children}</main>
+      <main className={`${classes.main} mx-4`}>{children}</main>
       <footer className={classes.footer}>
         <Footer />
       </footer>
