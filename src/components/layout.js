@@ -12,8 +12,8 @@ import Header from './header'
 import Footer from './footer'
 import Libraries from './libraries'
 
-import '../global.scss'
-import classes from './layout.module.scss'
+import '../global.css'
+import classes from './layout.module.css'
 
 const Layout = ({ children }) => {
   const { site } = useStaticQuery(

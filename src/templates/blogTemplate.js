@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import SEO from '../components/seo'
 import Layout from '../components/layout'
-import './blogTemplate.scss'
+import './blogTemplate.css'
 
 const BlogTemplate = ({ pageContext: { node } }) => (
   <Layout>

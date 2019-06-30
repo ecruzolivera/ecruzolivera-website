@@ -15,16 +15,11 @@ const Header = ({ menuLinks, socialLinks }) => (
     </ul>
     <ul className='flex'>
       {socialLinks.map(link => (
-        <RouterLink
-          href={link.to}
-          target='_blank'
-          rel='noreferrer'
-          key={link.to}
-        >
-          <li className='px-4 text-black hover:opacity-50 text-xl'>
-            <i className={link.icon} />
-          </li>
-        </RouterLink>
+        <li key={link.to} className='px-4 text-black hover:opacity-50 text-xl'>
+          <a href={link.to} target='_blank' rel='noopener noreferrer'>
+            <i className={link.icon} />{' '}
+          </a>
+        </li>
       ))}
     </ul>
   </div>
