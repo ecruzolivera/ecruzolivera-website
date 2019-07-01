@@ -37,7 +37,7 @@ In the Computer Science and Software Engineering world, there is a similar conce
 Most of us have used what I like to call _ad-hoc-on-the-fly-switch-case-state-machines_, What I mean by this?
 Let use an example with a simple [turnstile machine](https://en.wikipedia.org/wiki/Turnstile).
 
-![Turnstile state chart Image](images/Turnstile_StateChart.svg.png)
+![Turnstile state chart](images/Turnstile_StateChart.svg.png)
 
 The turnstile state chart is like the "hello world" of the state machine designs, it's simple and has all the features of a finite state machine: events, transitions, auto-transitions, and states. In the example the are two possible states **Lock** (initial state) and **UnLock**, and two possible events or inputs: **Coin** inserted and **Push** bar.
 
