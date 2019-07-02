@@ -93,7 +93,7 @@ int main() {
 
 This is the console output:
 
-```console
+```bash
 Autotransition Lock -> Lock
 Transition Lock -> UnLock
 Autotransition UnLock -> UnLock
@@ -187,7 +187,7 @@ int main() {
 
 This is the console output:
 
-```console
+```bash
 Event: 1 received
 Autotransition Locked->Locked
 Event: 1 received
@@ -285,7 +285,7 @@ int main() {
 
 This is the console output:
 
-```console
+```bash
 HeaterOn
 HeaterOff
 InternalLampOn

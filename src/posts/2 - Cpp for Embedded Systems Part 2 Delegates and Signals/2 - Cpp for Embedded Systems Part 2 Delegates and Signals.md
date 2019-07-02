@@ -76,7 +76,7 @@ int main()
 }
 ```
 
-```console
+```bash
 output:
 MyClass Method called
 MyClass Static method called
@@ -165,7 +165,7 @@ int main()
 }
 ```
 
-```console
+```bash
 output:
 MyClass Method called
 MyClass Static method called

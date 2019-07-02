@@ -7,7 +7,7 @@ const Header = ({ menuLinks, socialLinks }) => (
     <ul className='flex'>
       {menuLinks.map(link => (
         <RouterLink to={link.to} key={link.to}>
-          <li className='px-4 text-black border-black hover:border-b-2'>
+          <li className='px-4 text-black border-b-2 hover:border-black'>
             {link.text}
           </li>
         </RouterLink>
@@ -15,7 +15,7 @@ const Header = ({ menuLinks, socialLinks }) => (
     </ul>
     <ul className='flex'>
       {socialLinks.map(link => (
-        <li key={link.to} className='px-4 text-black hover:opacity-50 text-xl'>
+        <li key={link.to} className='px-4 text-black border-b-2 hover:border-black'>
           <a href={link.to} target='_blank' rel='noopener noreferrer'>
             <i className={link.icon} />{' '}
           </a>
