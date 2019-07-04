@@ -38,14 +38,17 @@ const Layout = ({ children }) => {
     {
       icon: 'fab fa-twitter',
       to: `https://twitter.com/${site.siteMetadata.twitter}`,
+      label: 'Follow me on twitter',
     },
     {
       icon: 'fab fa-gitlab',
       to: `https://gitlab.com/${site.siteMetadata.gitlab}`,
+      label: 'My gitlab repositories',
     },
     {
       icon: 'fab fa-linkedin',
       to: `https://www.linkedin.com/in/${site.siteMetadata.linkedin}`,
+      label: 'My linkedin profile',
     },
   ]
   return (
