@@ -9,6 +9,9 @@ const IndexPage = () => {
     <Layout>
       <SEO title='Home' />
       <article className='container max-w-xl mx-auto px-2 text-justify leading-loose'>
+        <h1 className='text-center text-2xl font-medium leading-none mb-8'>
+          About Me
+        </h1>
         <p>
           I'm a Developer with 7 years of experience designing and implementing
           software for Embedded Systems.

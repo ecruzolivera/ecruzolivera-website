@@ -1,3 +1,9 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
 body {
   font-family: Ubuntu, sans-serif;
   background-color: whitesmoke;
@@ -8,12 +14,6 @@ code {
   font-family: 'Ubuntu Mono', monospace;
 }
 
-@tailwind base;
-
-@tailwind components;
-
-@tailwind utilities;
-
 .linkText {
   @apply bg-gray-400 p-1 rounded-sm;
 }
@@ -21,7 +21,6 @@ code {
 .linkText:hover {
   @apply bg-gray-500;
 }
-
 
 .transition-400 {
   transition: 400ms;
