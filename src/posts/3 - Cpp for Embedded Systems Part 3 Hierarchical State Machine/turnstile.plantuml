@@ -1,0 +1,7 @@
+@startuml Turnstile
+[*] --> Lock
+Lock --> UnLock: Coin
+UnLock --> Lock: Push
+UnLock --> UnLock: Coin
+Lock --> Lock: Push
+@enduml

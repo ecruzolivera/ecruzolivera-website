@@ -21,7 +21,9 @@ As a sort of a foot note (in the introduction ;-)), I'm an advocate for C++ in b
 
 In full disclosure, this library was developed with the help of [Manuel Alejandro Linares Paez](https://www.linkedin.com/in/manuel-alejandro-linares-paez/).
 
-## What is a Hierarchical State Machine?
+## A Hierarchical State Machine
+
+>What is that?
 
 Lets first talk about "simple" State Machines most formally know as Finite State Machines because of the ... finite states. These are the classical Computer Science and Electrical Engineering State Machines usually thought in Digital Electronics classes.
 This type of States Machines are often used to model several systems with clear states and outputs for every state. They are used from a simple turnstile control to a compiler lexical parser, and they help a LOT to keep the solution simple and auditable.
@@ -37,7 +39,7 @@ In the Computer Science and Software Engineering world, there is a similar conce
 Most of us have used what I like to call _ad-hoc-on-the-fly-switch-case-state-machines_, What I mean by this?
 Let use an example with a simple [turnstile machine](https://en.wikipedia.org/wiki/Turnstile).
 
-![Turnstile state chart](images/Turnstile_StateChart.svg.png)
+![Turnstile state chart](images/Turnstile.png)
 
 The turnstile state chart is like the "hello world" of the state machine designs, it's simple and has all the features of a finite state machine: events, transitions, auto-transitions, and states. In the example the are two possible states **Lock** (initial state) and **UnLock**, and two possible events or inputs: **Coin** inserted and **Push** bar.
 
@@ -62,14 +64,14 @@ void Dispatch(Event event) {
       state = UnLock;
       printf("Transition Lock -> UnLock \n\r");
     } else if (event == Push) {
-      printf("Autotransition Lock -> Lock \n\r");
+      printf("Self transition Lock -> Lock \n\r");
     } else {
       printf("Event Error: %i is not a valid event!! \n\r", event);
     }
     break;
   case UnLock:
     if (event == Coin) {
-      printf("Autotransition UnLock -> UnLock \n\r");
+      printf("Self transition UnLock -> UnLock \n\r");
     } else if (event == Push) {
       state = Lock;
       printf("Transition UnLock -> Lock \n\r");
@@ -94,9 +96,9 @@ int main() {
 This is the console output:
 
 ```bash
-Autotransition Lock -> Lock
+Self transition Lock -> Lock
 Transition Lock -> UnLock
-Autotransition UnLock -> UnLock
+Self transition UnLock -> UnLock
 Transition UnLock -> Lock
 ```
 
@@ -136,7 +138,7 @@ const int STATE_MAX_EVENTS = 2;
 
 void OnPushedInLocked(int event) {
   printf("Event: %i received\r\n", event);
-  printf("Autotransition Locked->Locked\r\n");
+  printf("Self transition Locked->Locked\r\n");
 }
 
 void OnPushedInUnLocked(int event) {
@@ -151,7 +153,7 @@ void OnCoinInsertedInLocked(int event) {
 
 void OnCoinInsertedInUnLocked(int event) {
   printf("Event: %i received\r\n", event);
-  printf("Autotransition UnLocked->UnLocked\r\n");
+  printf("Self transition UnLocked->UnLocked\r\n");
 }
 
 int main() {
@@ -189,13 +191,13 @@ This is the console output:
 
 ```bash
 Event: 1 received
-Autotransition Locked->Locked
+Self transition Locked->Locked
 Event: 1 received
-Autotransition Locked->Locked
+Self transition Locked->Locked
 Event: 0 received
 Transition Locked->UnLocked
 Event: 0 received
-Autotransition UnLocked->UnLocked
+Self transition UnLocked->UnLocked
 Event: 1 received
 Transition UnLocked->Locked
 ```
@@ -208,10 +210,9 @@ First, we have a number of "event handlers" in this case also known as global fu
 
 Now I will present an Oven controller example that will be used to show the hierarchical part of the machine. The example was taken from the Wikipedia article about [UML state machines](https://en.wikipedia.org/wiki/UML_state_machine).
 
-
 ![Oven Controller state chart (source: Mirosamek at English Wikipedia)](images/UML_state_machine_Oven.png)
 
-This controller uses two top-level states: DoorOpen and Heating, and is a really dumb oven the only way that you can keep it off is by open the door. The Heating state has two substates: Toasting and Baking, the main difference is that the toasting process is at a fixed temperature with a timer, and when baking you can set the temperature value.
+This controller uses two top-level states: DoorOpen and Heating, and is a really dumb oven the only way that you can keep it off is by open the door. The Heating state has two subStates: Toasting and Baking, the main difference is that the toasting process is at a fixed temperature with a timer, and when baking you can set the temperature value.
 
 The UML design uses the entry/exit handlers as the outputs of the state machine. In this case, I used the state's  `signalEntered` and `signalExited`, I also could sub-class the State class and override the `onExit` and `onEntry` virtual methods.
 
@@ -241,12 +242,12 @@ void TurnOffBaking() { printf("Not Baking\r\n"); }
 
 int main() {
   enum Events { DoorOpen, DoorClose, DoToasting, DoBaking };
-  const int DOOROPEN_STATE_EVENTS = 1;
+  const int DOOR_OPEN_STATE_EVENTS = 1;
   const int HEATING_STATE_EVENTS = 3;
   const int TOASTING_STATE_EVENTS = 1;
   const int BAKING_STATE_EVENTS = 1;
 
-  Declare::State<DOOROPEN_STATE_EVENTS> doorOpenState;
+  Declare::State<DOOR_OPEN_STATE_EVENTS> doorOpenState;
   Declare::State<HEATING_STATE_EVENTS> heatingState;
   Declare::State<TOASTING_STATE_EVENTS> toastingState;
   Declare::State<BAKING_STATE_EVENTS> bakingState;
