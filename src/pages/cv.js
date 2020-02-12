@@ -35,6 +35,7 @@ const CV = () => {
     jobs: [
       {
         start_date: '2019',
+        end_date: 'Current',
         title: 'Embedded Software Developer',
         place: 'Wipro Technologies',
         city: 'Queretaro',

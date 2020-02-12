@@ -40,7 +40,7 @@ const Blog = ({ classes }) => {
           {data.allMarkdownRemark.edges.map(edge => (
             <li
               key={edge.node.frontmatter.title}
-              className='border-l-2 hover:border-black transition-400 mb-8 pl-2 '
+              className='border-l-2 border-gray-900 hover:border-gray-400 transition-400 mb-8 pl-2 '
             >
               <RouterLink
                 to={edge.node.frontmatter.slug}
@@ -50,11 +50,11 @@ const Blog = ({ classes }) => {
                 <p className='text-sm'>
                   <span>
                     <i className='far fa-calendar' />
-                    <span className='ml-1 text-gray-700'>{edge.node.frontmatter.date}</span>
+                    <span className='ml-1 text-gray-400'>{edge.node.frontmatter.date}</span>
                   </span>
                   <span className='ml-4'>
                     <i className='far fa-clock' />
-                    <span className='ml-1 text-gray-700'>{edge.node.timeToRead} min</span>
+                    <span className='ml-1 text-gray-400'>{edge.node.timeToRead} min</span>
                   </span>
                 </p>
                 <p className='text-sm'>{edge.node.excerpt}</p>

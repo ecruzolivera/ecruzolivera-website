@@ -6,13 +6,6 @@
   "keywords": [
     "gatsby"
   ],
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
   "license": "MIT",
   "author": "Ernesto Cruz Olivera <ernesto@ecruzolivera.tech>",
   "scripts": {

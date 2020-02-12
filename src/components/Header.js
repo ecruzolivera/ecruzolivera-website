@@ -11,7 +11,7 @@ const Header = ({ menuLinks, socialLinks }) => (
           <RouterLink
             to={link.to}
             key={link.to}
-            className='px-2 pb-1 mx-1 text-black border-b-2 border-whitesmoke hover:border-black'
+            className='px-2 pb-1 mx-1 text-primary border-b-2 border-bg-primary hover:border-secondary'
           >
             {link.text}
           </RouterLink>
@@ -26,7 +26,7 @@ const Header = ({ menuLinks, socialLinks }) => (
             target='_blank'
             rel='noopener noreferrer'
             aria-label={link.label}
-            className='text-lg px-2 pb-1 mx-1 text-black border-b-2 border-whitesmoke hover:border-black'
+            className='text-lg px-2 pb-1 mx-1 text-primary border-b-2 border-bg-primary hover:border-secondary'
           >
             <i className={link.icon} />
           </OutboundLink>

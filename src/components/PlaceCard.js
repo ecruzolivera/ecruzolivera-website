@@ -8,9 +8,9 @@ const PlaceCard = ({ place }) => (
       {place.end_date ? ' - ' + place.end_date : ''}
     </p>
     <div>
-      <h3 className='text-black'>{place.title}</h3>
-      <p className='text-gray-600 text-sm'>{place.place}</p>
-      <p className='text-gray-600 text-sm italic'>
+      <h3 className='text-gray-100'>{place.title}</h3>
+      <p className='text-gray-500 text-sm'>{place.place}</p>
+      <p className='text-gray-500 text-sm italic'>
         {place.city}, {place.country}.
       </p>
     </div>

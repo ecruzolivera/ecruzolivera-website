@@ -1,8 +1,6 @@
-.post-body h2,
-.post-body h3,
-.post-body h4 {
-  @apply text-black;
-}
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 .post-body h2 {
   @apply text-xl mt-4;
@@ -13,10 +11,11 @@
 }
 
 .post-body a {
-  @apply bg-gray-400 p-1 rounded-sm;
+  background-color: theme('colors.bg-secondary');
+  @apply p-1 rounded-sm;
 }
 .post-body a:hover {
-  @apply bg-gray-500;
+  background-color: theme('colors.bg-primary');
 }
 
 .post-body ul {
@@ -39,5 +38,5 @@
 }
 
 .md-figure-caption {
-  @apply text-center text-gray-600;
+  @apply text-center;
 }
