@@ -38,5 +38,6 @@
 }
 
 .md-figure-caption {
+  color: theme('colors.secondary');
   @apply text-center;
 }
