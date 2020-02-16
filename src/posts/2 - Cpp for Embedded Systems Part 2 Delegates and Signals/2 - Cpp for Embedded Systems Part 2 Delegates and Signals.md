@@ -2,7 +2,7 @@
 title : "Cpp for Embedded Systems Part 2: Delegates and Signals"
 description : "Series about using C++ in microcontrollers"
 date : 2018-11-22
-slug : "Cpp for Embedded Systems Part 2: Delegates and Signals" 
+slug : "Cpp_for_Embedded_Systems_Part_2_Delegates_and_Signals" 
 tags : ["cpp", "containers", "collections", "embedded systems", "microcontrollers"]
 ---
 

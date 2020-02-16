@@ -2,7 +2,7 @@
 title : "Cpp for Embedded Systems Part 4: Better Threads"
 description : "Series about using C++ in microcontrollers"
 date :  2019-04-21
-slug : "Cpp for Embedded Systems Part 4: Better Threads" 
+slug : "Cpp_for_Embedded_Systems_Part_4_Better_Threads" 
 tags : ["cpp", "containers", "collections", "embedded systems", "microcontrollers", "state machines"]
 ---
 

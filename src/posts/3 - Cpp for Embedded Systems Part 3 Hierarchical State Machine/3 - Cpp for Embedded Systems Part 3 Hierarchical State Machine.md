@@ -2,7 +2,7 @@
 title : "Cpp for Embedded Systems Part 3: Hierarchical State Machines"
 description : "Series about using C++ in microcontrollers"
 date :  2019-03-20
-slug : "Cpp for Embedded Systems Part 3: Hierarchical State Machines" 
+slug : "Cpp_for_Embedded_Systems_Part_3_Hierarchical_State_Machines" 
 tags : ["cpp", "containers", "collections", "embedded systems", "microcontrollers", "state machines"]
 ---
 
