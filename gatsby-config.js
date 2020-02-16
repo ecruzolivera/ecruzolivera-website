@@ -8,6 +8,7 @@ module.exports = {
     twitter: `ecruzolivera`,
     gitlab: `ecruzolivera`,
     linkedin: `ecruzolivera`,
+    siteUrl: `https://ecruzolivera.tech/`,
     keywords: [
       `personal`,
       `blog`,
@@ -27,17 +28,6 @@ module.exports = {
       options: {
         trackingId: 'UA-143250984-1',
         anonymize: true,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-purgecss`,
-      options: {
-        printRejected: true, // Print removed selectors and processed file names
-        // develop: true, // Enable while using `gatsby develop`
-        tailwind: true, // Enable tailwindcss support
-        // whitelist: ['whitelist'], // Don't remove this selector
-        ignore: ['prismjs/'], // Ignore files/folders
-        // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
       },
     },
     `gatsby-plugin-postcss`,
@@ -87,10 +77,73 @@ module.exports = {
         name: `Ernesto Cruz Olivera Personal website`,
         short_name: `ecruzolivera`,
         start_url: `/`,
-        background_color: `#F5F5F5`,
-        theme_color: `#F5F5F5`,
+        background_color: `#181A1B`,
+        theme_color: `#181A1B`,
         display: `minimal-ui`,
         icon: `src/images/me.jpg`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        // query: `
+        //   {
+        //     site {
+        //       siteMetadata {
+        //         title
+        //         description
+        //         siteUrl
+        //         site_url: siteUrl
+        //       }
+        //     }
+        //   }
+        // `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.edges.map(edge => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.excerpt,
+                  date: edge.node.frontmatter.date,
+                  url: `${site.siteMetadata.siteUrl}/${edge.node.frontmatter.slug}`,
+                  guid: site.siteMetadata.siteUrl + edge.node.frontmatter.slug,
+                  custom_elements: [{ 'content:encoded': edge.node.html }],
+                })
+              })
+            },
+            query: `
+              {
+                allMarkdownRemark(
+                  sort: { order: DESC, fields: [frontmatter___date] }
+                  limit: 1000
+                ) {
+                  edges {
+                    node {
+                      frontmatter {
+                        date(formatString: "DD MMMM YYYY")
+                        tags
+                        description
+                        title
+                        slug
+                      }
+                      excerpt
+                      timeToRead
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+            title: "Ernesto's RSS Feed",
+            // optional configuration to insert feed reference in pages:
+            // if `string` is used, it will be used to create RegExp and then test if pathname of
+            // current page satisfied this regular expression;
+            // if not provided or `undefined`, all pages will have feed reference inserted
+            match: '^/blog/',
+            // optional configuration to specify external rss feed, such as feedburner
+            // link: 'https://feeds.feedburner.com/gatsby/blog',
+          },
+        ],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

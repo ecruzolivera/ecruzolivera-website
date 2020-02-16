@@ -50,11 +50,15 @@ const Blog = ({ classes }) => {
                 <p className='text-sm'>
                   <span>
                     <i className='far fa-calendar' />
-                    <span className='ml-1 text-gray-400'>{edge.node.frontmatter.date}</span>
+                    <span className='ml-1 text-gray-400'>
+                      {edge.node.frontmatter.date}
+                    </span>
                   </span>
                   <span className='ml-4'>
                     <i className='far fa-clock' />
-                    <span className='ml-1 text-gray-400'>{edge.node.timeToRead} min</span>
+                    <span className='ml-1 text-gray-400'>
+                      {edge.node.timeToRead} min
+                    </span>
                   </span>
                 </p>
                 <p className='text-sm'>{edge.node.excerpt}</p>
