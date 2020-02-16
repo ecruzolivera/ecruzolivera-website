@@ -21,6 +21,7 @@ const Layout = ({ children }) => {
       query {
         site {
           siteMetadata {
+            siteUrl
             twitter
             gitlab
             linkedin
@@ -49,6 +50,11 @@ const Layout = ({ children }) => {
       icon: 'fab fa-linkedin',
       to: `https://www.linkedin.com/in/${site.siteMetadata.linkedin}`,
       label: 'My linkedin profile',
+    },
+    {
+      icon: 'fas fa-rss',
+      to: `${site.siteMetadata.siteUrl}/rss.xml`,
+      label: 'RSS feed',
     },
   ]
   return (
