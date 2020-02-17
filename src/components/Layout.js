@@ -37,14 +37,9 @@ const Layout = ({ children }) => {
   ]
   const socialLinks = [
     {
-      icon: 'fas fa-envelope',
-      to: `mailto:ernesto@ecruzolivera.tech?subject=Reaching%20Out&body=How%20are%20you`,
-      label: 'email me',
-    },
-    {
       icon: 'fab fa-twitter',
       to: `https://twitter.com/${site.siteMetadata.twitter}`,
-      label: 'Follow me on twitter',
+      label: 'Contact me on twitter',
     },
     {
       icon: 'fab fa-gitlab',
@@ -54,7 +49,12 @@ const Layout = ({ children }) => {
     {
       icon: 'fab fa-linkedin',
       to: `https://www.linkedin.com/in/${site.siteMetadata.linkedin}`,
-      label: 'My linkedin profile',
+      label: 'Contact me on linkedin',
+    },
+    {
+      icon: 'fas fa-envelope',
+      to: `mailto:ernesto@ecruzolivera.tech?subject=Reaching%20Out&body=How%20are%20you`,
+      label: 'Contact me via email',
     },
     {
       icon: 'fas fa-rss',
