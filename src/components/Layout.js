@@ -37,6 +37,11 @@ const Layout = ({ children }) => {
   ]
   const socialLinks = [
     {
+      icon: 'fas fa-envelope',
+      to: `mailto:ernesto@ecruzolivera.tech?subject=Reaching%20Out&body=How%20are%20you`,
+      label: 'email me',
+    },
+    {
       icon: 'fab fa-twitter',
       to: `https://twitter.com/${site.siteMetadata.twitter}`,
       label: 'Follow me on twitter',
