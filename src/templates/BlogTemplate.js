@@ -27,9 +27,8 @@ const BlogTemplate = ({ pageContext: { node } }) => (
         dangerouslySetInnerHTML={{ __html: node.html }}
       />
     </article>
-    <Comments/>
+    <Comments />
   </Layout>
-
 )
 
 BlogTemplate.propTypes = {
