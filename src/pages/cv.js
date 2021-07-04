@@ -23,19 +23,19 @@ const CV = () => {
         city: 'Havana',
         country: 'Cuba',
       },
-      {
-        start_date: '2001',
-        end_date: '2005',
-        title: 'Bachelor of Science',
-        place: 'I.P.V.C. Vladimir I. Lenin',
-        city: 'Havana',
-        country: 'Cuba',
-      },
     ],
     jobs: [
       {
-        start_date: '2019',
+        start_date: '2020',
         end_date: 'Current',
+        title: 'Qt/C++ Developer Contractor',
+        place: 'Tango.io',
+        city: 'Queretaro',
+        country: 'Mexico',
+      },
+      {
+        start_date: '2019',
+        end_date: '2020',
         title: 'Embedded Software Developer',
         place: 'Wipro Technologies',
         city: 'Queretaro',
