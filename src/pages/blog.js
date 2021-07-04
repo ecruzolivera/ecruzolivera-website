@@ -37,7 +37,7 @@ const Blog = ({ classes }) => {
           Blog
         </h1>
         <ul>
-          {data.allMarkdownRemark.edges.map(edge => (
+          {data.allMarkdownRemark.edges.map((edge) => (
             <li
               key={edge.node.frontmatter.title}
               className='border-l-2 border-gray-900 hover:border-gray-400 transition-400 mb-8 pl-2 '

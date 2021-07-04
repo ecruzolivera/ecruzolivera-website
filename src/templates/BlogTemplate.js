@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
+import Comments from '../components/Comments'
 
 import './BlogTemplate.css'
 
@@ -26,7 +27,9 @@ const BlogTemplate = ({ pageContext: { node } }) => (
         dangerouslySetInnerHTML={{ __html: node.html }}
       />
     </article>
+    <Comments/>
   </Layout>
+
 )
 
 BlogTemplate.propTypes = {
