@@ -6,7 +6,7 @@ slug : "Cpp_for_Embedded_Systems_Part_4_Better_Threads"
 tags : ["cpp", "containers", "collections", "embedded systems", "microcontrollers", "state machines"]
 ---
 
-Hi there dear Software/Embedded developers, this is the 4th part of a [blog series](https://ecruzolivera.tech/posts/) about using C++ in software development for microcontrollers.
+Hi there dear Software/Embedded developers, this is the 4th part of a [blog series](https://ecruzolivera.tech/blog/) about using C++ in software development for microcontrollers.
 
 In this article, I will talk about why I love RTOS (Real Time Operative Systems), but why I dislike most of the API that most RTOS vendors offer, and what can we do about it. 
 

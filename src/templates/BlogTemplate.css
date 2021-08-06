@@ -41,3 +41,7 @@
   color: theme('colors.secondary');
   @apply text-center;
 }
+
+#comments-container {
+  @apply mt-10;
+}
