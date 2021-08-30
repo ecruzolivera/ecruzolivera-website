@@ -23,13 +23,13 @@ module.exports = {
     ],
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: 'UA-143250984-1',
-        anonymize: true,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: 'UA-143250984-1',
+    //     anonymize: true,
+    //   },
+    // },
     `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-transformer-remark`,
