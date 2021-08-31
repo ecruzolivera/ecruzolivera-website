@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link as RouterLink } from 'gatsby'
-import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
 const Header = ({ menuLinks, socialLinks }) => (
   <div className='flex justify-between max-w-2xl mx-auto my-4'>
@@ -21,7 +20,7 @@ const Header = ({ menuLinks, socialLinks }) => (
     <ul className='flex'>
       {socialLinks.map(link => (
         <li key={link.to}>
-          <OutboundLink
+          <a
             href={link.to}
             target='_blank'
             rel='noopener noreferrer'
@@ -29,7 +28,7 @@ const Header = ({ menuLinks, socialLinks }) => (
             className='text-lg px-2 pb-1 mx-1 text-primary border-b-2 border-bg-primary hover:border-secondary'
           >
             <i className={link.icon} />
-          </OutboundLink>
+          </a>
         </li>
       ))}
     </ul>
