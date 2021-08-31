@@ -18,8 +18,8 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
-    "cssnano": "^5.0.0",
-    "dotenv": "^10.0.0",
+    "cssnano": "^4.1.10",
+    "dotenv": "^8.1.0",
     "gatsby": "^2.19.16",
     "gatsby-image": "^2.2.23",
     "gatsby-plugin-catch-links": "^2.1.12",
