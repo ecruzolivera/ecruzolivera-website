@@ -1,26 +1,28 @@
-require('dotenv').config()
+require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
     title: `Ernesto's site`,
     description: `Ernesto Cruz Olivera personal Website`,
     author: `Ernesto Cruz Olivera`,
-    twitter: `ecruzolivera`,
+    github: `ecruzolivera`,
     gitlab: `ecruzolivera`,
     linkedin: `ecruzolivera`,
-    siteUrl: `https://ecruzolivera.tech/`,
+    siteUrl: `https://ecruzolivera.vercel.app/`,
     keywords: [
       `personal`,
       `blog`,
       `C`,
       `C/C++`,
+      `Qt`,
+      `QML`,
       `embedded`,
       `microcontrollers`,
       `Real Time`,
       `State Machines`,
       `ReactJs`,
-      `Javascript`,
-    ],
+      `Javascript`
+    ]
   },
   plugins: [
     // {
@@ -38,36 +40,36 @@ module.exports = {
           {
             resolve: `gatsby-remark-figure-caption`,
             options: {
-              figureClassName: 'md-figure',
-              captionClassName: 'md-figure-caption',
-            },
+              figureClassName: "md-figure",
+              captionClassName: "md-figure-caption"
+            }
           },
           {
-            resolve: 'gatsby-remark-external-links',
+            resolve: "gatsby-remark-external-links",
             options: {
-              target: '_blank',
-              rel: 'noreferrer',
-            },
+              target: "_blank",
+              rel: "noreferrer"
+            }
           },
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 750,
-            },
+              maxWidth: 750
+            }
           },
           {
-            resolve: `gatsby-remark-prismjs`,
-          },
-        ],
-      },
+            resolve: `gatsby-remark-prismjs`
+          }
+        ]
+      }
     },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `src`,
-        path: `${__dirname}/src`,
-      },
+        path: `${__dirname}/src`
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -80,8 +82,8 @@ module.exports = {
         background_color: `#181A1B`,
         theme_color: `#181A1B`,
         display: `minimal-ui`,
-        icon: `src/images/me.jpg`, // This path is relative to the root of the site.
-      },
+        icon: `src/images/me.jpg` // This path is relative to the root of the site.
+      }
     },
     {
       resolve: `gatsby-plugin-feed`,
@@ -107,9 +109,9 @@ module.exports = {
                   date: edge.node.frontmatter.date,
                   url: `${site.siteMetadata.siteUrl}/${edge.node.frontmatter.slug}`,
                   guid: site.siteMetadata.siteUrl + edge.node.frontmatter.slug,
-                  custom_elements: [{ 'content:encoded': edge.node.html }],
-                })
-              })
+                  custom_elements: [{ "content:encoded": edge.node.html }]
+                });
+              });
             },
             query: `
               {
@@ -133,8 +135,8 @@ module.exports = {
                 }
               }
             `,
-            output: '/rss.xml',
-            title: "Ernesto's RSS Feed",
+            output: "/rss.xml",
+            title: "Ernesto's RSS Feed"
             // optional configuration to insert feed reference in pages:
             // if `string` is used, it will be used to create RegExp and then test if pathname of
             // current page satisfied this regular expression;
@@ -142,12 +144,12 @@ module.exports = {
             // match: '^/blog/',
             // optional configuration to specify external rss feed, such as feedburner
             // link: 'https://feeds.feedburner.com/gatsby/blog',
-          },
-        ],
-      },
+          }
+        ]
+      }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    `gatsby-plugin-offline`,
-  ],
-}
+    `gatsby-plugin-offline`
+  ]
+};
