@@ -7,7 +7,7 @@
     "gatsby"
   ],
   "license": "MIT",
-  "author": "Ernesto Cruz Olivera <ernesto@ecruzolivera.tech>",
+  "author": "Ernesto Cruz Olivera <ecruzolivera@gmail.com>",
   "scripts": {
     "now-build": "npm run build",
     "build": "gatsby build",
