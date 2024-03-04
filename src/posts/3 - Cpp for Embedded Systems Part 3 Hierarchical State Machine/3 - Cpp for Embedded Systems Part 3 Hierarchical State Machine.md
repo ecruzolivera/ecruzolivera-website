@@ -1,9 +1,10 @@
 ---
-title : "Cpp for Embedded Systems Part 3: Hierarchical State Machines"
-description : "Series about using C++ in microcontrollers"
-date :  2019-03-20
-slug : "Cpp_for_Embedded_Systems_Part_3_Hierarchical_State_Machines" 
-tags : ["cpp", "containers", "collections", "embedded systems", "microcontrollers", "state machines"]
+title: "Cpp for Embedded Systems Part 3: Hierarchical State Machines"
+description: "Series about using C++ in microcontrollers"
+excerpt: "Series about using C++ in microcontrollers"
+date: 2019-03-20
+slug: "Cpp_for_Embedded_Systems_Part_3_Hierarchical_State_Machines"
+tags: ["cpp", "containers", "collections", "embedded systems", "microcontrollers", "state machines"]
 ---
 
 Hi there dear Software/Embedded developers, this is the 3rd part of a [blog series](https://ecruzolivera.tech/blog/) about using C++ in software development for microcontrollers. In the [first](https://ecruzolivera.tech/blog/cpp-for-embedded-systems-part-1-heapless-containers/) article I explained a technique that uses C++ templates and inheritance for the developing data structures that are allocated on the stack but can be referenced like if they were on the heap. In the [second](https://ecruzolivera.tech/blog/cpp-for-embedded-systems-part-2-delegates-and-signals/) article in the series, I used those data structures to create a Signal and Delegate class that allows the use of one or multiple callbacks in a type-safe way.
@@ -23,7 +24,7 @@ In full disclosure, this library was developed with the help of [Manuel Alejandr
 
 ## A Hierarchical State Machine
 
->What is that?
+> What is that?
 
 Lets first talk about "simple" State Machines most formally know as Finite State Machines because of the ... finite states. These are the classical Computer Science and Electrical Engineering State Machines usually thought in Digital Electronics classes.
 This type of States Machines are often used to model several systems with clear states and outputs for every state. They are used from a simple turnstile control to a compiler lexical parser, and they help a LOT to keep the solution simple and auditable.
@@ -120,7 +121,7 @@ In any particular state, an event can trigger an action and/or a transition to a
 
 The Hierarchical State Machine class must be able to add states, dispatch events, start and stop the event processing. In order to do this, it needs to modify the internal protected state of the states but without breaking the encapsulation. There are two ways to archive this in C++, one is to make the Hierarchical State Machine class a subclass of the state class, this has the inconvenience that the state machine will also have the internal list of events that are completely useless to the state machine and it will consume memory that is precious in any microcontroller application. The other way to archive this is in using the hated but useful `friend` modifier :)
 
-Yes i know, but but, we need to understand that what a lot of peoples thinks that are the "problems" of C++ are also the reason of it's  success, because of it gives you an edge when pushing the performance and the resource utilization to the limit. For a desktop application using protected inheritance in order to access the protected members of a class is the go to solution but this also is the classical [criticism](https://youtu.be/wfMtDGfHWpA?t=151) of inheritance by the functional programming folks.
+Yes i know, but but, we need to understand that what a lot of peoples thinks that are the "problems" of C++ are also the reason of it's success, because of it gives you an edge when pushing the performance and the resource utilization to the limit. For a desktop application using protected inheritance in order to access the protected members of a class is the go to solution but this also is the classical [criticism](https://youtu.be/wfMtDGfHWpA?t=151) of inheritance by the functional programming folks.
 
 Another questionable decision was the specification, using the `#define MAX_NEST_DEPTH 16` macro, of the internal state machine "TopState --> ChildState --> ChildChildState" chain up to a total of 16 maximum nested states. This size can be increased by redefining of the macro before the inclusion of the Hierarchical State Machine header. In this case I had another option, that is, the use of a template parameter to specify the size, but this parameter is defaulted to 16 y mean SIXTEEN, if your state machine has more than 16 nested states what in the name of the AI overlord are you designing; and using a template parameter to declare the state machine class with the default parameter is like ugly I guess.
 
@@ -204,7 +205,7 @@ Transition UnLocked->Locked
 
 Let's break the example:
 
-First, we have a number of "event handlers" in this case also known as global functions, but because of the `Action_t` type it's really a Delegate of type `void(int)` you can bind global functions or class methods. The event handler receives a parameter that is the event id number that is defined in the `Event` enum,  this enables to use the same event handler for all events in the same state and internally handle each case.
+First, we have a number of "event handlers" in this case also known as global functions, but because of the `Action_t` type it's really a Delegate of type `void(int)` you can bind global functions or class methods. The event handler receives a parameter that is the event id number that is defined in the `Event` enum, this enables to use the same event handler for all events in the same state and internally handle each case.
 
 ## Hierarchical State Machine
 
@@ -214,7 +215,7 @@ Now I will present an Oven controller example that will be used to show the hier
 
 This controller uses two top-level states: DoorOpen and Heating, and is a really dumb oven the only way that you can keep it off is by open the door. The Heating state has two subStates: Toasting and Baking, the main difference is that the toasting process is at a fixed temperature with a timer, and when baking you can set the temperature value.
 
-The UML design uses the entry/exit handlers as the outputs of the state machine. In this case, I used the state's  `signalEntered` and `signalExited`, I also could sub-class the State class and override the `onExit` and `onEntry` virtual methods.
+The UML design uses the entry/exit handlers as the outputs of the state machine. In this case, I used the state's `signalEntered` and `signalExited`, I also could sub-class the State class and override the `onExit` and `onEntry` virtual methods.
 
 Here is the code:
 

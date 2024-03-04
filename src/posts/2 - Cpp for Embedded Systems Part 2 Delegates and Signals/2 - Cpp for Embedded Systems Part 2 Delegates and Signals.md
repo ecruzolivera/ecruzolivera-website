@@ -1,9 +1,10 @@
 ---
-title : "Cpp for Embedded Systems Part 2: Delegates and Signals"
-description : "Series about using C++ in microcontrollers"
-date : 2018-11-22
-slug : "Cpp_for_Embedded_Systems_Part_2_Delegates_and_Signals" 
-tags : ["cpp", "containers", "collections", "embedded systems", "microcontrollers"]
+title: "Cpp for Embedded Systems Part 2: Delegates and Signals"
+description: "Series about using C++ in microcontrollers"
+excerpt: "Series about using C++ in microcontrollers"
+date: 2018-11-22
+slug: "Cpp_for_Embedded_Systems_Part_2_Delegates_and_Signals"
+tags: ["cpp", "containers", "collections", "embedded systems", "microcontrollers"]
 ---
 
 Here I am in the mission of provoking an aneurysm to the "hardcore" C/ASM microcontrollers developers. On this front, several months ago, I posted the first article in the series where is explained a technique using C++ template magic with a little of inheritance, to archive true type-safe and bound-checked containers at compile time without using dynamic memory allocation.

@@ -1,0 +1,29 @@
+{
+    "social": [
+        {
+            "icon": "fab fa-github",
+            "to": "https: //github.com/ecruzolivera",
+            "label": "Contact me on github"
+        },
+        {
+            "icon": "fab fa-gitlab",
+            "to": "https: //gitlab.com/ecruzolivera",
+            "label": "My gitlab repositories"
+        },
+        {
+            "icon": "fab fa-linkedin",
+            "to": "https: //www.linkedin.com/in/ecruzolivera",
+            "label": "Contact me on linkedin"
+        },
+        {
+            "icon": "fas fa-envelope",
+            "to": "mailto:ecruzolivera@gmail.com?subject=Reaching%20Out&body=How%20are%20you",
+            "label": "Contact me via email"
+        },
+        {
+            "icon": "fas fa-rss",
+            "to": "rss.xml",
+            "label": "RSS feed"
+        }
+    ]
+}

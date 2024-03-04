@@ -1,14 +1,15 @@
 ---
-title : "Cpp for Embedded Systems Part 4: Better Threads"
-description : "Series about using C++ in microcontrollers"
-date :  2019-04-21
-slug : "Cpp_for_Embedded_Systems_Part_4_Better_Threads" 
-tags : ["cpp", "containers", "collections", "embedded systems", "microcontrollers", "state machines"]
+title: "Cpp for Embedded Systems Part 4: Better Threads"
+description: "Series about using C++ in microcontrollers"
+excerpt: "Series about using C++ in microcontrollers"
+date: 2019-04-21
+slug: "Cpp_for_Embedded_Systems_Part_4_Better_Threads"
+tags: ["cpp", "containers", "collections", "embedded systems", "microcontrollers", "state machines"]
 ---
 
 Hi there dear Software/Embedded developers, this is the 4th part of a [blog series](https://ecruzolivera.tech/blog/) about using C++ in software development for microcontrollers.
 
-In this article, I will talk about why I love RTOS (Real Time Operative Systems), but why I dislike most of the API that most RTOS vendors offer, and what can we do about it. 
+In this article, I will talk about why I love RTOS (Real Time Operative Systems), but why I dislike most of the API that most RTOS vendors offer, and what can we do about it.
 
 As a sort of footnote, the code is this post is in no way production anything, in pasts posts I have used code snippets from classes and libraries that are tested and that check for runtime errors in every method call. In this post, for the sake of brevity, I minimize the run-time error checking in order to keep the code flow clear and more understandable.
 
@@ -25,22 +26,22 @@ Now we have another two keywords _latencies_ and _deterministic_.
 
 For example in a desktop general purpose OS, the latency of a letter showing in the screen when you press a key can't be know in a deterministic way, because of the value will always be changing with the current system load; therefore a desktop OS can't be used in a real-time application. In Embedded Systems "Real-Time" has nothing to do with clock speed or memory size, you can have a real-time application in a 1 MHz system and in a 1 GHz one. The only requirement is that the latency of the response to an input must be deterministic.
 
-The biggest advantage of using an RTOS is that it allows an abstraction of the logical tasks in an embedded application. The different tasks(Data Acquisition,  Data Processing, Data Transmission, Control Loops, etc) can be decoupled using the thread-safe RTOS primitives (Thread flags, Semaphores, Mailboxes, etc). Using this approach several developers can work in the same project without stopping on each other's feet.
+The biggest advantage of using an RTOS is that it allows an abstraction of the logical tasks in an embedded application. The different tasks(Data Acquisition, Data Processing, Data Transmission, Control Loops, etc) can be decoupled using the thread-safe RTOS primitives (Thread flags, Semaphores, Mailboxes, etc). Using this approach several developers can work in the same project without stopping on each other's feet.
 
 For more details about RTOS and Real-Time systems you can read these articles:
 
 1. [What is An RTOS? (from FreeRTOS)](https://www.freertos.org/about-RTOS.html)
 2. [Real-time operating system (from Wikipedia)](https://en.wikipedia.org/wiki/Real-time_operating_system)
-3. [What is an RTOS?  (from High Integrity Systems)](https://www.highintegritysystems.com/rtos/what-is-an-rtos/)
-4. [What is an RTOS?  (from Micrium)](https://www.micrium.com/rtos/what-is-an-rtos/)
-5. [What is a Real-Time Operating System (RTOS)?  (from National Instruments)](http://www.ni.com/en-us/innovations/white-papers/07/what-is-a-real-time-operating-system--rtos--.html)
+3. [What is an RTOS? (from High Integrity Systems)](https://www.highintegritysystems.com/rtos/what-is-an-rtos/)
+4. [What is an RTOS? (from Micrium)](https://www.micrium.com/rtos/what-is-an-rtos/)
+5. [What is a Real-Time Operating System (RTOS)? (from National Instruments)](http://www.ni.com/en-us/innovations/white-papers/07/what-is-a-real-time-operating-system--rtos--.html)
 
 ## Current threads APIs
 
 Most current RTOS APIs are C based ones, there are several reasons why this is so:
 
 - **Portability**: C is still more supported than C++.
-- **Longevity**: Most current used RTOS (FreeRTOS, VxWorks, QNX, etc) are 10+ years old and when they started to be developed, C was the only real option for embedded software development (except for [Ada](https://en.wikipedia.org/wiki/Ada_(programming_language)), but [Ada](https://en.wikipedia.org/wiki/Ada_(programming_language)) hasn't really taken off in most embedded applications).
+- **Longevity**: Most current used RTOS (FreeRTOS, VxWorks, QNX, etc) are 10+ years old and when they started to be developed, C was the only real option for embedded software development (except for [Ada](<https://en.wikipedia.org/wiki/Ada_(programming_language)>), but [Ada](<https://en.wikipedia.org/wiki/Ada_(programming_language)>) hasn't really taken off in most embedded applications).
 - **The "Simple Language" vs "Bloated Language" argument**: Most of the embedded developers that I have meet react to C++ like the vampires to garlic, no matter that every mayor architecture supports C++ by now, but they tend to be conservative in technology adoption and throw the argument C is simple and easy to get (which is true) and C++ it's bloated and unnecessary.
 
 Most RTOS thread APIs uses a plain C function with several parameters including a pointer to the thread function and the argument to be passed to the thread, and in some way returns the thread handle. For example, the code below is a hypothetical RTOS that initializes two threads A and B:
@@ -88,16 +89,16 @@ Because of the C API only accepts C functions and static C++ methods. The wrappe
 class Thread {
 public:
     Thread():threadHandler_(NULL){}
-    
+
     virtual ~Thread(){
         terminate();
     }
-    
+
     bool start(){
         if(threadHandler_ != NULL){
             threadHandler_ = ThreadCreate(reinterpret_cast<void (*)(void *)>(EntryPoint),
                                           reinterpret_cast<void *>(this));
-            return true;        
+            return true;
         }
         return false;
     }
@@ -106,7 +107,7 @@ public:
         if(threadHandler_ != NULL){
             ThreadDestroy(threadHandler);
             threadHandler == NULL;
-        } 
+        }
     }
 
 protected:
@@ -153,9 +154,9 @@ void main(){
 }
 ```
 
-The Thread wrapper class has the static private method `EntryPoint` that is passed as the RTOS thread function, this method receives as a parameter the thread C++ instance in order to be able to run the instance `run` method. 
+The Thread wrapper class has the static private method `EntryPoint` that is passed as the RTOS thread function, this method receives as a parameter the thread C++ instance in order to be able to run the instance `run` method.
 
-You may ask: But what about parameterized threads? 
+You may ask: But what about parameterized threads?
 
 Now that the thread parameter is used as the internal workaround to the C thread function of the RTOS API, How can we use a parameterized thread with the C++ wrapper?
 
@@ -215,7 +216,6 @@ void main(){
 
 Because of the Thread subclass is a C++ class we can do whatever we want with it, in the example I chose to pass the parameter in the class constructor, but in reality, you can do whatever you want. The C++ subclassing is arguably more reusable than the plain C version, and it gets rid of the constant typecasting which improves the type safety of the final application.
 
-
 ## Even Better Threads
 
 It will be desirable to be able to create a thread without the constant subclassing of the Thread wrapper class, in order to do that the wrapper must be able to use any nonmember C/C++ method as the thread function. For this I use a [delegate class](https://gitlab.com/ecruzolivera/eHSM/blob/master/Include/Delegate.hpp), that is part of a library for a [Hierarchical State Machine](https://gitlab.com/ecruzolivera/eHSM) that I have been discussing in the past [articles](https://ecruzolivera.tech/posts/).
@@ -224,15 +224,15 @@ It will be desirable to be able to create a thread without the constant subclass
 class Thread {
 public:
     Thread():threadHandler_(NULL){}
-    
+
     virtual ~Thread(){
         terminate();
     }
-    
+
     bool start(){
         if(threadHandler_ != NULL){
             threadHandler_ = ThreadCreate(reinterpret_cast<void (*)(void *)>(EntryPoint), reinterpret_cast<void *>(this));
-            return true;        
+            return true;
         }
         return false;
     }
@@ -241,7 +241,7 @@ public:
         if(threadHandler_ != NULL){
             ThreadDestroy(threadHandler);
             threadHandler == NULL;
-        } 
+        }
     }
 
     template <void (*Method)(void)>
@@ -283,9 +283,9 @@ private:
 
 ```
 
-The new thread class has a new private member `Delegate<void> delegate_` through which is possible to bind any C/C++ method, and the `Thread::run` method gets an empty implementation in order to be able to instantiate a thread without subclassing it. The code below is an example of a SerialPort class that is used in conjunction with two threads for reading and writing asynchronous into the [UART](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter) hardware. 
+The new thread class has a new private member `Delegate<void> delegate_` through which is possible to bind any C/C++ method, and the `Thread::run` method gets an empty implementation in order to be able to instantiate a thread without subclassing it. The code below is an example of a SerialPort class that is used in conjunction with two threads for reading and writing asynchronous into the [UART](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter) hardware.
 
-The `SerialPort` class uses a hypothetical underlying C API to talk to the hardware and also uses another hypothetical `ThreadSafeRingBuffer` class that is basically a standard [FIFO](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)) data structure that is thread-safe, all RTOS have some variation of that. 
+The `SerialPort` class uses a hypothetical underlying C API to talk to the hardware and also uses another hypothetical `ThreadSafeRingBuffer` class that is basically a standard [FIFO](<https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)>) data structure that is thread-safe, all RTOS have some variation of that.
 
 The `SerialPort` class isn't in any way the best design for a proper serial port class, the "real one" will probably use [DMA](https://en.wikipedia.org/wiki/Direct_memory_access) for the transmission and reception of data, but this blog post is already long, and I'm trying to keep it simple.
 
@@ -299,9 +299,9 @@ public:
     {
         uart_ = UartInit(portId);
     }
-    
+
     ~SerialPort(){
-        UartDeInit(uart_); 
+        UartDeInit(uart_);
     }
 
     int read(std::uint8_t *dataPtr, int size){
@@ -353,7 +353,7 @@ void main(){
 }
 ```
 
-The main caveat of this example is the need to instantiate the threads and the serial port manually in the main function and make them work together. 
+The main caveat of this example is the need to instantiate the threads and the serial port manually in the main function and make them work together.
 
 In the next section we will learn why:
 
@@ -364,7 +364,6 @@ In the next section we will learn why:
 The objective of the [Active Object Pattern](https://en.wikipedia.org/wiki/Active_object) is to decouple the method invocation from the execution. In other words: hide the thread to the class/library user. Let's reimplement the serial port class but as an active object:
 
 For a more complete explanation of the active object pattern please read the [Dr. Dobb's article](http://www.drdobbs.com/parallel/prefer-using-active-objects-instead-of-n/225700095?pgno=1) about the subject.
-
 
 ```cpp
 class SerialPort{
@@ -380,11 +379,11 @@ public:
         threadRx_.start();
         threadTx_.start();
     }
-    
+
     ~SerialPort(){
         threadRx_.terminate();
         threadTx_.terminate();
-        UartDeInit(uart_); 
+        UartDeInit(uart_);
     }
 
 
@@ -420,7 +419,7 @@ private:
     ThreadSafeRingBuffer tx_;
     Thread threadRx_;
     Thread threadTx_;
-    
+
 };
 
 
