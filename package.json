@@ -1,53 +1,30 @@
 {
   "name": "ecruzolivera-website",
-  "version": "0.1.0",
-  "private": true,
-  "description": "Ernesto Cruz Olivera personal website",
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
-  "author": "Ernesto Cruz Olivera <ecruzolivera@gmail.com>",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "now-build": "npm run build",
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
-    "serve": "gatsby serve",
-    "start": "npm run develop",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro build && wrangler pages dev",
+    "astro": "astro",
+    "deploy": "astro build && wrangler pages deploy",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
-    "cssnano": "^4.1.10",
-    "dotenv": "^8.1.0",
-    "gatsby": "^2.19.16",
-    "gatsby-image": "^2.2.23",
-    "gatsby-plugin-catch-links": "^2.1.12",
-    "gatsby-plugin-feed": "^2.3.27",
-    "gatsby-plugin-manifest": "^2.2.20",
-    "gatsby-plugin-offline": "^2.2.10",
-    "gatsby-plugin-postcss": "^2.1.10",
-    "gatsby-plugin-purgecss": "^4.0.1",
-    "gatsby-plugin-react-helmet": "^3.1.10",
-    "gatsby-plugin-sharp": "^2.2.27",
-    "gatsby-remark-classes": "^0.1.2",
-    "gatsby-remark-component": "^1.1.3",
-    "gatsby-remark-draw": "^1.0.16",
-    "gatsby-remark-external-links": "0.0.4",
-    "gatsby-remark-figure-caption": "^2.0.0",
-    "gatsby-remark-images": "^3.1.25",
-    "gatsby-remark-prismjs": "^3.3.16",
-    "gatsby-source-filesystem": "^2.1.28",
-    "gatsby-transformer-remark": "^2.6.26",
-    "gatsby-transformer-sharp": "^2.2.19",
-    "prismjs": "^1.17.1",
-    "prop-types": "^15.7.2",
-    "react": "^16.10.1",
-    "react-dom": "^16.10.1",
-    "react-helmet": "^5.2.1",
-    "tailwindcss": "^1.1.2"
+    "@astrojs/check": "^0.5.10",
+    "@astrojs/cloudflare": "^10.2.4",
+    "@astrojs/mdx": "^2.3.1",
+    "@astrojs/rss": "^4.0.5",
+    "@astrojs/sitemap": "^3.1.4",
+    "astro": "^4.6.4",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
-    "prettier": "^1.19.1"
+    "@cloudflare/workers-types": "^4.20240423.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0",
+    "wrangler": "^3.52.0"
   }
 }

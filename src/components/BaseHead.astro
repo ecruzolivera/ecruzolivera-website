@@ -1,0 +1,37 @@
+---
+// Import the global.css file here so that it is included on
+// all pages through the use of the <BaseHead /> component.
+import "../styles/global.css"
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Font preloads -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{SITE_TITLE}</title>
+<meta name="title" content={SITE_TITLE} />
+<meta name="description" content={SITE_DESCRIPTION} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={SITE_TITLE} />
+<meta property="og:description" content={SITE_DESCRIPTION} />
+<meta property="og:image" content={new URL("/favicon.jpeg", Astro.url)} />
