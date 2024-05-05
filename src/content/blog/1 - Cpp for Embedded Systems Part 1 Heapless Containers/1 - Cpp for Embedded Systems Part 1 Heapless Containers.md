@@ -16,7 +16,7 @@ Is a Raspberry Pi an Embedded System?
 
 For me, the answer depends on the final use of the device. If it’s used to manage a weather station and send the data to a central server, I would call it an Embedded System, but if it has a keyboard, a mouse and a monitor attached and is running a general purpose OS then it's not very different from a general purpose PC.
 
-But an Embedded System could also be running a general purpose OS and be used for only the execution of a very specific task, if this is the case, it’s very likely that the toolchain also supports the C++ Standard Template Library ([STL](https://en.wikipedia.org/wiki/Standard_Template_Library)) that has all types of containers and this post would not make much sense :(
+But an Embedded System could also be running a general purpose OS and be used for only the execution of a very specific task, if this is the case, it’s very likely that the toolchain also supports the C++ Standard Template Library ([STL](https://en.wikipedia.org/wiki/Standard_Template_Library)) that has all types of containers and this post would not make much sense :(.
 
 There is a whole group of Embedded System that can’t run a general purpose OS and/or can’t use dynamic memory (heap) allocation due to the non-deterministic nature of it and the possibility of memory fragmentation.
 
