@@ -9,12 +9,27 @@ import Footer from "../components/Footer.astro"
     <BaseHead />
     <style>
       body {
+        display: grid;
+        grid-template-areas:
+          "header"
+          "main"
+          "footer";
+        grid-template-rows: auto 1fr auto;
+        grid-template-columns: auto;
+        height: 100vh;
+      }
+      .header {
+        grid-area: "header";
+      }
+      .main {
+        grid-area: "main";
+      }
+      .footer {
+        grid-area: "footer";
       }
 
       main {
-        width: 720px;
-        max-width: calc(100% - 2em);
-        margin: auto;
+        max-width: 720px;
         padding: 3em 1em;
       }
       @media (max-width: 720px) {
@@ -29,10 +44,14 @@ import Footer from "../components/Footer.astro"
   </head>
 
   <body>
-    <Header />
-    <main>
+    <header class="header">
+      <Header />
+    </header>
+    <main class="main">
       <slot />
     </main>
-    <Footer />
+    <footer class="footer">
+      <Footer />
+    </footer>
   </body>
 </html>
