@@ -2,7 +2,7 @@
 const today = new Date()
 ---
 
-<>
+<div class="root">
   <p>
     &copy; {today.getFullYear()} Ernesto Cruz Olivera. All rights reserved.
   </p>
@@ -10,26 +10,18 @@ const today = new Date()
   <p>
     Vectors and icons by <a href="https://www.svgrepo.com" target="_blank">SVG Repo</a>
   </p>
-</>
+</div>
 
 <style>
-  footer {
-    padding: 2em 1em 6em 1em;
+  .root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
     background: linear-gradient(var(--gray-gradient)) no-repeat;
     color: rgb(var(--gray));
     text-align: center;
   }
-  .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1em;
-    margin-top: 1em;
-  }
-  .social-links a {
-    text-decoration: none;
-    color: rgb(var(--gray));
-  }
-  .social-links a:hover {
-    color: rgb(var(--gray-dark));
+  .root > * {
   }
 </style>

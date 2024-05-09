@@ -9,28 +9,30 @@ import Footer from "../components/Footer.astro"
     <BaseHead />
     <style>
       body {
+        max-width: 1024px;
         display: grid;
         grid-template-areas:
-          "header"
-          "main"
-          "footer";
+          header
+          main
+          footer;
         grid-template-rows: auto 1fr auto;
         grid-template-columns: auto;
         height: 100vh;
       }
-      .header {
-        grid-area: "header";
-      }
-      .main {
-        grid-area: "main";
-      }
-      .footer {
-        grid-area: "footer";
+      header {
+        background-color: blue;
+        place-self: stretch;
       }
 
       main {
-        max-width: 720px;
+        place-self: stretch;
+        background-color: yellow;
         padding: 3em 1em;
+      }
+
+      footer {
+        place-self: stretch;
+        background-color: green;
       }
       @media (max-width: 720px) {
         body {
@@ -44,13 +46,13 @@ import Footer from "../components/Footer.astro"
   </head>
 
   <body>
-    <header class="header">
+    <header>
       <Header />
     </header>
-    <main class="main">
+    <main>
       <slot />
     </main>
-    <footer class="footer">
+    <footer>
       <Footer />
     </footer>
   </body>
