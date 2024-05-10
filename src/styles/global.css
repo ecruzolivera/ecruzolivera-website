@@ -10,4 +10,69 @@
   text-align: left;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  background-color: smoke-white;
+}
+
+ul,
+il {
+  list-style: none;
+}
+
+/* Define colors */
+:root {
+  --primary-color: #ff9800;
+  --primary-variant: #ff5722;
+  --background-color: #212121;
+  --text-color: #ffffff;
+  --link-color: #ff9800;
+  --black: #101010;
+}
+
+/* Apply styles */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Primary color for branding */
+.branding {
+  color: var(--primary-color);
+}
+
+/* Primary variant for interactive elements */
+.primary-variant {
+  color: var(--primary-variant);
+}
+
+/* Secondary colors for accents */
+.secondary-color {
+  color: var(--secondary-color);
+}
+
+/* Link styles */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Button styles */
+.button {
+  background-color: var(--primary-variant);
+  color: var(--text-color);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: darken(var(--primary-variant), 10%);
+}
+
+.button:active {
+  background-color: darken(var(--primary-variant), 20%);
 }
