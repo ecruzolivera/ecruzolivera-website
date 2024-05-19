@@ -15,7 +15,7 @@
 
 ul,
 il {
-  list-style: none;
+  list-style: inside;
 }
 
 /* Define colors */
@@ -59,8 +59,7 @@ a {
   position: relative; /* Needed for positioning the pseudo-element */
 }
 
-p a,
-li a {
+a {
   padding-left: 1%;
 }
 

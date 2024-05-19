@@ -8,23 +8,20 @@ const posts = (await getCollection("blog")).sort((a, b) => a.data.pubDate.valueO
 <style>
   a h4 {
     display: inline-block;
+    padding-left: 1%;
   }
 </style>
 <BaseLayout>
   <article>
     <h1>Blog</h1>
-    <section>
-      <ul>
-        {
-          posts.map((post) => (
-            <li>
-              <a href={`/blog/${post.slug}/`}>
-                <h4 class="title">{post.data.title}</h4>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+    {
+      posts.map((post) => (
+        <div>
+          <a href={`/blog/${post.slug}/`}>
+            <h4 class="title">{post.data.title}</h4>
+          </a>
+        </div>
+      ))
+    }
   </article>
 </BaseLayout>
