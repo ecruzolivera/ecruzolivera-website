@@ -11,7 +11,6 @@
   vertical-align: baseline;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  background-color: smoke-white;
 }
 
 ul,
@@ -77,7 +76,7 @@ a:hover::before {
 }
 
 @media (max-width: 720px) {
-  p {
+  .main p {
     font-size: 1.2em;
   }
 }

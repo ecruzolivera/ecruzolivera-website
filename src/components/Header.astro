@@ -3,20 +3,6 @@ import { SITE_TITLE } from "../consts"
 import { Icon } from "astro-icon/components"
 ---
 
-<header>
-  <nav>
-    <div>
-      <a class="title" href="/">{SITE_TITLE}</a>
-      <a href="/about">About</a>
-    </div>
-    <div>
-      <a href="https://www.linkedin.com/in/ecruzolivera" target="_blank"> <Icon name="linkedin" /></a>
-      <a href="https://gitlab.com/ecruzolivera" target="_blank"> <Icon name="gitlab" /></a>
-      <a href="https://github.com/ecruzolivera" target="_blank"> <Icon name="github" /></a>
-    </div>
-  </nav>
-</header>
-
 <style>
   nav {
     display: flex;
@@ -38,3 +24,17 @@ import { Icon } from "astro-icon/components"
     font-size: 1em;
   }
 </style>
+
+<header>
+  <nav>
+    <div>
+      <a class="title" href="/">{SITE_TITLE}</a>
+      <a href="/about">About</a>
+    </div>
+    <div>
+      <a href="https://www.linkedin.com/in/ecruzolivera" target="_blank"> <Icon name="linkedin" /></a>
+      <a href="https://gitlab.com/ecruzolivera" target="_blank"> <Icon name="gitlab" /></a>
+      <a href="https://github.com/ecruzolivera" target="_blank"> <Icon name="github" /></a>
+    </div>
+  </nav>
+</header>
