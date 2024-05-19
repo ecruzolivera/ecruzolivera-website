@@ -34,6 +34,10 @@ body {
   color: var(--text-color);
 }
 
+p {
+  max-width: 1024px;
+}
+
 /* Primary color for branding */
 .branding {
   color: var(--primary-color);
@@ -76,7 +80,40 @@ a:hover::before {
 }
 
 @media (max-width: 720px) {
-  .main p {
+  .main {
+    padding: 1em;
+  }
+  p {
     font-size: 1.2em;
   }
+}
+
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.25em;
+}
+h4 {
+  font-size: 1.1;
+}
+
+pre,
+p,
+h2,
+h3,
+h4 {
+  margin-top: 1em;
+}
+pre * {
+  font-family: "Noto Sans Mono", sans-serif;
+}
+
+pre {
+  white-space: pre-wrap; /* Line breaks will be preserved, but long lines will wrap */
+  overflow-x: auto; /* Horizontal scroll bar if needed */
+  max-width: 100%; /* Ensures the pre element does not exceed the parent container's width */
 }
