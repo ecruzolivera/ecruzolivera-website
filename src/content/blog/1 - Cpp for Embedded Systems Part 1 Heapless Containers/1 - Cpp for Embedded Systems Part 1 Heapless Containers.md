@@ -6,9 +6,16 @@ tags: ["cpp", "containers", "collections", "embedded systems", "microcontrollers
 slug: "Cpp_for_Embedded_Systems_Part_1_Heapless_Containers"
 ---
 
-To the developers of probably all the programming languages except C++:
+<!--toc:start-->
 
-_Containers are the Collections of the C++ world._
+- [Static or stack-based memory allocation](#static-or-stack-based-memory-allocation)
+- [C arrays](#c-arrays)
+- [C++ generic array with stack-based allocation](#c-generic-array-with-stack-based-allocation)
+- [Improved C++ generic array with stack-based allocation](#improved-c-generic-array-with-stack-based-allocation)
+- [Conclusions](#conclusions)
+<!--toc:end-->
+
+To the developers of probably all the programming languages except C++: _Containers are the Collections of the C++ world._
 
 Let’s clarify the definition of Embedded System that will be used in this post. In the industry Embedded System is a very broad concept that basically includes any programmable device that is used for a very specific task, in contrast with a general purpose PC or Laptop. So, for example:
 
@@ -16,7 +23,7 @@ Is a Raspberry Pi an Embedded System?
 
 For me, the answer depends on the final use of the device. If it’s used to manage a weather station and send the data to a central server, I would call it an Embedded System, but if it has a keyboard, a mouse and a monitor attached and is running a general purpose OS then it's not very different from a general purpose PC.
 
-But an Embedded System could also be running a general purpose OS and be used for only the execution of a very specific task, if this is the case, it’s very likely that the toolchain also supports the C++ Standard Template Library ([STL](https://en.wikipedia.org/wiki/Standard_Template_Library)) that has all types of containers and this post would not make much sense :(.
+But an Embedded System could also be running a general purpose OS and be used for only the execution of a very specific task, if this is the case, it’s very likely that the tool chain also supports the C++ Standard Template Library ([STL](https://en.wikipedia.org/wiki/Standard_Template_Library)) that has all types of containers and this post would not make much sense :(.
 
 There is a whole group of Embedded System that can’t run a general purpose OS and/or can’t use dynamic memory (heap) allocation due to the non-deterministic nature of it and the possibility of memory fragmentation.
 
@@ -26,7 +33,7 @@ Summarizing, this post is about C++ container for systems that for some reason c
 
 ## Static or stack-based memory allocation
 
-Having all your memory allocation static or stack-based has the advantage that because of all allocation happens at compile time, first it’s deterministic and second, the compiler reports the exact memory footprint of your application, and then the linker knows if the application fits in the device memory or not, and all this just by building the application. The are several ways of using this type of memory allocation for all your container-like needs:
+Having all your memory allocation static or stack-based has the advantage that because of all allocation happens at compile time, first it’s deterministic and second, the compiler reports the exact memory footprint of your application, and then the linker knows if the application fits in the device memory or not, and all this just by building the application. There are several ways of using this type of memory allocation for all your container-like needs:
 
 ## C arrays
 
@@ -51,7 +58,7 @@ This approach has a lot of shortcomings:
 - To archive static/stack-based allocation it's probably necessary to keep a global `#define` with the array size, for every different array size.
 - **#crazy #madness**, etc
 
-This example could be easily improved with the use of C structs and C functions to encapsulate most of the functionality but will continue to lack genericity and it will still be necessary to use macros to define different array sizes.
+This example could be easily improved with the use of C structs and C functions to encapsulate most of the functionality but will continue to lack genericity, and it will still be necessary to use macros to define different array sizes.
 
 There are esoteric solutions using very elaborate C macros and the preprocessor concatenation operator `##`. But if your underlying architecture has a decent C++ compiler support, I really don’t see the point to stick with plain C.
 
@@ -89,13 +96,13 @@ Because of that, you can’t have a common reference for two arrays of different
 
 ## Improved C++ generic array with stack-based allocation
 
-So what to do? With a little of C++ template magic and inheritance is possible to archive the three main characteristics of a C++ container in microcontroller land:
+What to do? With a little of C++ template magic and inheritance is possible to archive the three main characteristics of a C++ container in microcontroller land:
 
 - Stack-based Memory Allocation
 - Genericity
 - Build abstractions on top of the containers
 
-Take a look at this:
+**Generic stack allocated array**
 
 ```cpp
 template <typename Type>
@@ -153,7 +160,7 @@ This code fragment it’s a simplification of an [Array Class](https://gitlab.co
 
 The idea is to split the container into two classes, the Array class, and the Declare::Array class. The first one has all the functionality and the later one derives from the first one and do the actual memory allocation.
 
-So you can use it like this:
+**How to use it**
 
 ```cpp
 #include <cstdint>
@@ -173,9 +180,9 @@ int main()
 }
 ```
 
-This pattern, for which I don’t really have a name, so lets informally call it **“The Declare:: Pattern”**..... mehh...., has allowed me to write C++ microcontroller applications that can really leverage the power of C++ as a language for this type of devices. C++ allows the development of generic and type-safe containers that are much safer and fun to use than the plain C equivalent.
+This pattern, for which I don’t have a name, let's informally call it **“The Declare:: Pattern”**, has allowed me to write C++ microcontroller applications that can leverage the power of C++ as a language without any significant cost in performance or memory footprint. C++ allows the development of generic and type-safe containers that are much safer and fun to use than the plain C equivalent.
 
-For the developers of microcontrollers applications that think that C++ is overkill or bloat or whatever another probably not true statement: It’s not the 90’s anymore, all major architectures have very good C++ support, take time to learn the language and forget the libraries, which you probably will not be able to use anyway. Templates could be your best friend that saves you a LOT of typing and debugging time.
+For the developers of microcontrollers applications that think that C++ is overkill or bloat or whatever another probably not true statement: It’s not the 90s anymore, all major architectures have very good C++ support, take time to learn the language and forget the libraries, which you probably will not be able to use anyway. Templates could be your best friend that saves you a LOT of typing and debugging time.
 
 ## Conclusions
 

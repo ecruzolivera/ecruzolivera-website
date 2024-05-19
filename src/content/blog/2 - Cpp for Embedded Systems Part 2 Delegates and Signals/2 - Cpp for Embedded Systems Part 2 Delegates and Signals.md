@@ -6,6 +6,13 @@ slug: "Cpp_for_Embedded_Systems_Part_2_Delegates_and_Signals"
 tags: ["cpp", "containers", "collections", "embedded systems", "microcontrollers"]
 ---
 
+<!--toc:start-->
+
+- [Delegate](#delegate)
+- [Signal](#signal)
+- [Conclusion](#conclusion)
+<!--toc:end-->
+
 Here I am in the mission of provoking an aneurysm to the "hardcore" C/ASM microcontrollers developers. On this front, several months ago, I posted the first article in the series where is explained a technique using C++ template magic with a little of inheritance, to archive true type-safe and bound-checked containers at compile time without using dynamic memory allocation.
 
 In this article, I will explain how to leverage those containers to use a Delegate and a Signal class that can be used with the following requirements:
@@ -19,15 +26,15 @@ All those requirements are needed to be able to squeeze the code in a microcontr
 
 At this point perhaps you are asking: "But why?, why in the name of all that is good I will use such thing in an embedded device?
 
-For a 1KB RAM microcontroller that only needs to watch a voltage level and toggle a PIN for whatever reason, I would say that you will only need a C compiler for your architecture, but since the arrival of the ARM Cortex-M architecture we have been seeing the rise of behemoths like the STM32H7 microcontroller family with more peripherals that you will need, and more memory that you will be able to use in plain C without blow something.
+For a 1 KB RAM microcontroller that only needs to watch a voltage level and toggle a PIN for whatever reason, I would say that you will only need a C compiler for your architecture, but since the arrival of the ARM Cortex-M architecture we have been seeing the rise of behemoths like the STM32H7 microcontroller family with more peripherals that you will need, and more memory that you will be able to use in plain C without blow something.
 
 With those microcontrollers, you will be able to handle several tasks at the same time using a Real-Time OS and to properly grow your application without fall into spaghetti code and madness, you will need high-level abstractions to keep the code modular and with a minimal surface area between the modules, and to really leverage all the power and versatility of the new generation of microcontrollers.
 
-It's almost impossible that you application scale if your foundations are macros and plain C function callbacks, of course, that are examples of excellent C code base like the Linux kernel but let's face it, the average developer is not as skilled and disciplined as a Linux Kernel developer.
+It's almost impossible that your application scale if your foundations are macros and plain C function callbacks, of course, that are examples of excellent C code base like the Linux kernel but let's face it, the average developer is not as skilled and disciplined as a Linux Kernel developer.
 
 Now you could say, "but in C you could also implement high-level abstractions, look at the GTK libraries!!!"
 
-Ok, the [GTK project](https://en.wikipedia.org/wiki/GTK%2B) is an excellent collection of libraries to develop GUI applications in C and almost no one use it in plain C. Most developers use other languages bindings to interact with GTK like PyGTK or Vala because of all the ceremony/pain of using GTK in plain C entails .... use [Qt](<https://en.wikipedia.org/wiki/Qt_(software)>),....cough, cough ......use Qt.
+Ok, the [GTK project](https://en.wikipedia.org/wiki/GTK%2B) is an excellent collection of libraries to develop GUI applications in C and almost no one use it in plain C. Most developers use other languages bindings to interact with GTK like PyGTK or Vala because of all the ceremony/pain of using GTK in plain C entails ... use [Qt](<https://en.wikipedia.org/wiki/Qt_(software)>), ... cough, cough ... use Qt.
 
 ## Delegate
 
@@ -88,7 +95,7 @@ a static class method
 a class method
 ```
 
-Limited to just one method at the time, and zero (void) or one parameter (passed by value). The class has the function call operator () overloaded to call the bound method (if any). It's designed to be the least intrusive possible and if is called without a method bound it just do nothing. If it has a method bound and you want to bind another one, it let you do it. Also has utility functions like isBinded(), isUnbinded() and clear() and they do what you think they should do.
+Limited to just one method at the time, and zero (void) or one parameter (passed by value). The class has the function call operator `()` overloaded to call the bound method (if any). It's designed to be the least intrusive possible and if is called without a method bound it just do nothing. If it has a method bound, and you want to bind another one, it let you do it. Also has utility functions like `isBinded()`, `isUnbinded()` and `clear()`, and they do what you think they should do.
 
 ## Signal
 
@@ -179,7 +186,7 @@ In the example, two signals are instantiated one that can be connected up to fou
 
 The connected methods/functions are called in the same order that they are connected. The connections can be overwritten, they must be disconnected explicitly.
 
-Remember that these classes are meant to use in an environment where no objects are ever destroyed, so it's up to you to be sure that the instance to which de signal is connected it's alive when the method notify() its called. If the connected instance is destroyed while and the signal its triggered then ... Kaput!!
+Remember that these classes are meant to use in an environment where no objects are ever destroyed, so it's up to you to be sure that the instance to which de signal is connected it's alive when the method `notify()` its called. If the connected instance is destroyed while and the signal its triggered then ... Kaput!!
 
 ## Conclusion
 

@@ -18,6 +18,11 @@ il {
   list-style: inside;
 }
 
+ol,
+il {
+  list-style-position: inside;
+}
+
 /* Define colors */
 :root {
   --primary-color: #ff9800;
@@ -44,13 +49,8 @@ p {
 }
 
 /* Primary variant for interactive elements */
-.primary-variant {
+.primary_variant {
   color: var(--primary-variant);
-}
-
-/* Secondary colors for accents */
-.secondary-color {
-  color: var(--secondary-color);
 }
 
 a {
@@ -100,6 +100,8 @@ h4 {
   font-size: 1.1;
 }
 
+ol,
+ul,
 pre,
 p,
 h2,
@@ -107,7 +109,8 @@ h3,
 h4 {
   margin-top: 1em;
 }
-pre * {
+pre *,
+p code {
   font-family: "Noto Sans Mono", sans-serif;
 }
 
@@ -115,4 +118,19 @@ pre {
   white-space: pre-wrap; /* Line breaks will be preserved, but long lines will wrap */
   overflow-x: auto; /* Horizontal scroll bar if needed */
   max-width: 100%; /* Ensures the pre element does not exceed the parent container's width */
+  padding: 1em;
+}
+
+p code {
+  color: var(--primary-variant);
+}
+
+blockquote {
+  font-style: italic; /* Italicizes the text */
+  border-left: 4px solid #ccc; /* Adds a left border */
+  margin: 1em;
+  padding: 1em;
+}
+blockquote p {
+  margin: 0;
 }

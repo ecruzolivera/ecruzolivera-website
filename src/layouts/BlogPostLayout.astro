@@ -7,10 +7,27 @@ type Props = CollectionEntry<"blog">["data"]
 const { title, pubDate, updatedDate } = Astro.props
 ---
 
+<style>
+  .dates {
+    display: flex;
+    gap: 1em;
+  }
+</style>
+
 <BaseLayout>
   <article>
     <h1>{title}</h1>
-    <p>{pubDate}{updatedDate && <p>{updatedDate}</p>}</p>
-    <slot class="content" />
+    <div class="dates">
+      <p>Published on {pubDate.toLocaleDateString()}</p>
+      {
+        updatedDate && (
+          <>
+            <p> - </p>
+            <p class="primary_variant">Updated on {pubDate.toLocaleDateString()}</p>
+          </>
+        )
+      }
+    </div>
+    <slot />
   </article>
 </BaseLayout>
