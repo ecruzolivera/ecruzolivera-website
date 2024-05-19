@@ -8,6 +8,7 @@
   font-size: 16px;
   line-height: 1.5;
   text-align: left;
+  vertical-align: baseline;
   word-wrap: break-word;
   overflow-wrap: break-word;
   background-color: smoke-white;
@@ -49,30 +50,34 @@ body {
   color: var(--secondary-color);
 }
 
-/* Link styles */
 a {
   color: var(--link-color);
   text-decoration: none;
+  position: relative; /* Needed for positioning the pseudo-element */
 }
 
-a:hover {
-  text-decoration: underline;
+p a,
+li a {
+  padding-left: 1%;
 }
 
-/* Button styles */
-.button {
-  background-color: var(--primary-variant);
-  color: var(--text-color);
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+a::before {
+  content: "/";
+  position: absolute;
+  top: 50%;
+  left: -1%;
+  transform: translateY(-50%);
+  font-size: 1em;
+  font-weight: bold;
+  display: none;
 }
 
-.button:hover {
-  background-color: darken(var(--primary-variant), 10%);
+a:hover::before {
+  display: inline;
 }
 
-.button:active {
-  background-color: darken(var(--primary-variant), 20%);
+@media (max-width: 720px) {
+  p {
+    font-size: 1.2em;
+  }
 }
