@@ -78,15 +78,6 @@ a:hover::before {
   display: inline;
 }
 
-@media (max-width: 720px) {
-  .main {
-    padding: 1em;
-  }
-  p {
-    font-size: 1.2em;
-  }
-}
-
 h1 {
   font-size: 2em;
 }
@@ -139,4 +130,13 @@ img {
   text-align: center;
   margin: auto;
   display: block;
+}
+
+@media (max-width: 720px) {
+  .main {
+    padding: 1em;
+  }
+  p {
+    font-size: 1.2em;
+  }
 }
