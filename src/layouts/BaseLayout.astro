@@ -10,32 +10,18 @@ import Footer from "../components/Footer.astro"
     <style>
       body {
         max-width: 1024px;
-        width: 100%;
+        width: 100vw;
         height: 100vh;
-        display: grid;
-        grid-template-areas:
-          "header"
-          "main"
-          "footer";
-        grid-template-rows: auto 1fr auto;
-        grid-template-columns: 1fr;
-        justify-content: center;
         margin: auto;
       }
       .header {
-        grid-area: header;
-        place-self: stretch;
       }
 
       .main {
-        grid-area: main;
-        place-self: stretch center;
         padding: 1em 3em;
       }
 
       .footer {
-        grid-area: footer;
-        place-self: stretch;
       }
     </style>
   </head>

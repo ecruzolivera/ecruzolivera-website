@@ -106,7 +106,6 @@ p code {
 }
 
 pre {
-  white-space: pre-wrap; /* Line breaks will be preserved, but long lines will wrap */
   overflow-x: auto; /* Horizontal scroll bar if needed */
   max-width: 100%; /* Ensures the pre element does not exceed the parent container's width */
   padding: 1em;

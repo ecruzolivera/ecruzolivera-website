@@ -8,6 +8,7 @@ import { Icon } from "astro-icon/components"
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   nav div {
@@ -22,6 +23,12 @@ import { Icon } from "astro-icon/components"
 
   [data-icon] {
     font-size: 1em;
+  }
+
+  @media (max-width: 600px) {
+    nav {
+      justify-content: center;
+    }
   }
 </style>
 
