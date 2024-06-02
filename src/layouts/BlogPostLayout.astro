@@ -31,3 +31,11 @@ const { title, pubDate, updatedDate } = Astro.props
     <slot />
   </article>
 </BaseLayout>
+<script>
+  document.querySelectorAll("article a").forEach((anchor) => {
+    const hreft = anchor.getAttribute("href")
+    if (hreft && hreft.startsWith("http")) {
+      anchor.setAttribute("target", "_blank")
+    }
+  })
+</script>
