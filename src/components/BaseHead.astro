@@ -36,3 +36,4 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 <meta property="og:title" content={SITE_TITLE} />
 <meta property="og:description" content={SITE_DESCRIPTION} />
 <meta property="og:image" content={new URL("/favicon.jpeg", Astro.url)} />
+<link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={`${Astro.site}rss.xml`} />
