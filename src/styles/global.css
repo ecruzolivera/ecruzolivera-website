@@ -1,3 +1,36 @@
+/* Register your custom font family and tell the browser where to find it. */
+@font-face {
+  font-family: "Noto Sans";
+  src: url("/fonts/NotoSans-Regular.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans Italic";
+  src: url("/fonts/NotoSans-Italic.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans Mono";
+  src: url("/fonts/NotoSansMono-Regular.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans Bold";
+  src: url("/fonts/NotoSans-Bold.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 *,
 *::before,
 *::after {
@@ -106,7 +139,7 @@ p {
 }
 pre *,
 p code {
-  font-family: "Noto Sans Mono", sans-serif;
+  font-family: "Noto Sans Mono", monospace;
 }
 
 pre {
