@@ -17,73 +17,84 @@ In this article, I will talk about how to avoid void pointer casting when using 
 
 ## What is a Memory Pool?
 
-Generalizing, when developing firmware for microcontrollers is not possible to allocate dynamic memory, but there is still the need to allocate m , In the context of **RTOS**, a Memory Pool is a primitive to create pools of memory ...
+Generalizing, when developing firmware for microcontrollers is not possible to allocate dynamic memory, but there is still the need to allocate memory on demand, but how can you allocate memory on demand when all memory needs to be statically allocated at compile time you ask? By using a [Memory Pool](https://en.wikipedia.org/wiki/Memory_pool).
 
-```cpp
-class SerialPort{
-public:
-    SerialPort(int portId, int bufferSize = 128):
-    uart_(NULL)
-    ,rx_(bufferSize)
-    ,tx_(bufferSize)
-    {
-        uart_ = UartInit(portId);
-        threadRx_.attachRunMethod<SerialPort, &SerialPort::hardwareRead>(&this);
-        threadTx_.attachRunMethod<SerialPort, &SerialPort::hardwareWrite>(&this);
-        threadRx_.start();
-        threadTx_.start();
+A **Memory Pool** API allows allocating a memory "chunk" divided in equally sized slots.
+
+The following example is a
+
+```c
+
+#define MEM_POOL_CAPACITY (16)
+#define QUEUE_CAPACITY (16)
+
+typedef struct {
+  int32_t sensor1;
+  int16_t sensor2;
+  int8_t sensor3;
+} Data_t;
+
+MemPoolId_t MemId;
+QueueId QueueId;
+
+void ThreadDataAdquisition(){
+  while(1){
+    // Wait for Sensor Ready Flags
+    // ...
+    Data_t *data =(Data_t*)MemPoolAlloc(MemId);
+    if(data == NULL){
+      // handle error
+      continue;
     }
+    data->sensor1 = Sensor1Read();
+    data->sensor2 = Sensor2Read();
+    data->sensor3 = Sensor3Read();
+    QueueSend(QueueId,(uint32_t)data);
+  }
+}
 
-    ~SerialPort(){
-        threadRx_.terminate();
-        threadTx_.terminate();
-        UartDeInit(uart_);
+void ThreadDataSend(){
+  uint8_t buffer[7]={0};
+  while(1){
+    Data_t *data =(Data_t*)QueueReceived(QueueId);
+    if(data == NULL){
+      // handle error
+      continue;
     }
-
-
-    int read(std::uint8_t *dataPtr, int size){
-        int bytesReaded = rx_.read(dataPtr, size);
-        return bytesReaded;
-    }
-
-    int write(const std::uint8_t *dataPtr, int size){
-        int bytesWritten = tx_.write(dataPtr, size);
-        return bytesWritten;
-    }
-
-private:
-    void hardwareRead(){
-        while(true){
-            UartBlockUntilByteAvailable(uart_); // magic function that blocks the thread until a byte is available.
-            std::uint8_t byte = UartReadByte(uart_);
-            rx_.write(byte);
-        }
-    }
-
-    void hardwareWrite(){
-        while(true){
-            std::uint8_t byte = tx_.read();
-            UartWriteByte(uart_, byte);
-            UartBlockUntilByteWritten(uart_); // magic function that blocks the thread until a byte is written.
-        }
-    }
-
-    UartHandler_t uart_;
-    ThreadSafeRingBuffer rx_;
-    ThreadSafeRingBuffer tx_;
-    Thread threadRx_;
-    Thread threadTx_;
-
-};
-
+    SerialSend(data);
+    // wait for send to finish
+    MemPoolFree(MemId, data);
+  }
+}
 
 void main(){
-    SerialPort serial(0);
-    const int bufferSize = 64;
-    std::uint8_t buffer[bufferSize];
-    int bytesReaded = serial.read(buffer, bufferSize);
-    // ...
+  KernelInit();
+
+  MemId = MemPoolNew(sizeof(Data_t), MEM_POOL_CAPACITY);
+  if(MemId == NULL){
+    //bail
+  }
+
+  QueueId = QueueNew(QUEUE_CAPACITY);
+  if(QueueId == NULL){
+    //bail
+  }
+
+  ThreadId_t threadDataId = ThreadNew(ThreadDataAdquisition);
+  if(threadDataId  == NULL){
+    //bail
+  }
+
+  ThreadId_t threadSendId = ThreadNew(ThreadDataAdquisition);
+  if(threadSendId   == NULL){
+    //bail
+  }
+
+  SensorInit();
+
+  KernelStart();
 }
+
 ```
 
 The code is more or less the same, the Tx/Rx threads and the `hardwareRead` and `hardwareWrite` methods are now a private member of the `SerialPort` class, and because of the threads and asynchronous part of the class is hidden to the user, the use of the class in the `main` function is painless.
