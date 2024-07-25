@@ -1,5 +1,9 @@
 {
   "name": "ecruzolivera-website",
+  "engines": {
+    "node": ">=20.15.1",
+    "npm": ">=10.7.0"
+  },
   "type": "module",
   "version": "0.0.1",
   "scripts": {
