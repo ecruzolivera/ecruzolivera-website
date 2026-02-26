@@ -1,9 +1,9 @@
 @font-face {
   font-family: "Noto Sans";
   src:
-    local("Noto Sans Regular"), /* Family Name */
-    local("NotoSans-Regular"), /* Postscript Name */
-    url("/fonts/notosans-400-subset.woff2") format("woff2");
+    local("Noto Sans Regular"),
+    /* Family Name */ local("NotoSans-Regular"),
+    /* Postscript Name */ url("/fonts/notosans-400-subset.woff2") format("woff2");
   font-weight: 400; /* Regular / Normal / 400 */
   font-style: normal;
   font-display: swap;
@@ -11,10 +11,10 @@
 
 @font-face {
   font-family: "Noto Sans Mono";
-  src: 
-    local("Noto Sans Mono Regular"), /* Family Name */
-    local("NotoSansMono-Regular"), /* Postscript Name */
-    url("/fonts/notosansmono-400-subset.woff2") format("woff2");
+  src:
+    local("Noto Sans Mono Regular"),
+    /* Family Name */ local("NotoSansMono-Regular"),
+    /* Postscript Name */ url("/fonts/notosansmono-400-subset.woff2") format("woff2");
   font-weight: 400; /* Regular / Normal / 400 */
   font-style: normal;
   font-display: swap;
@@ -132,9 +132,29 @@ p code {
 }
 
 pre {
+  position: relative; /* Anchor for absolutely-positioned copy button */
   overflow-x: auto; /* Horizontal scroll bar if needed */
   max-width: 100%; /* Ensures the pre element does not exceed the parent container's width */
   padding: 1em;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  padding: 0.25em 0.6em;
+  font-size: 0.75rem;
+  background: #3a3a3a;
+  color: #e1e4e8;
+  border: 1px solid #555;
+  border-radius: 4px;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.copy-btn.copied {
+  background: #2ea043;
+  border-color: #2ea043;
 }
 
 p code {
